@@ -8,7 +8,6 @@ default score= 0
 default scorepopquiz= 0
 
 #shs and college pop quiz
-define Wrichmond= Character("Wrichmond", color= "#0040ff")
 define mrpopquiz= Character("Mr.Pop Quiz", color= "#0040ff")
 
 #images for Pop Quiz
@@ -995,7 +994,7 @@ label start:
 
     label b5popquizcollege:
         hide screen countdown
-        play sound "audio/Correct Answer sfx.mp3"
+        play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}D. My Struggle{/b}.
         And this is the end of the pop quiz, let us now see the results."
         $ score +=0
