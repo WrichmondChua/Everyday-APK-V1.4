@@ -8,6 +8,7 @@ default score= 0
 default scorepopquiz= 0
 
 #shs and college pop quiz
+define Wrichmond= Character("Wrichmond", color= "#0040ff")
 define mrpopquiz= Character("Mr.Pop Quiz", color= "#0040ff")
 
 #images for Pop Quiz
@@ -994,7 +995,7 @@ label start:
 
     label b5popquizcollege:
         hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
+        play sound "audio/Correct Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}D. My Struggle{/b}.
         And this is the end of the pop quiz, let us now see the results."
         $ score +=0
@@ -1737,24 +1738,13 @@ label start:
 
         hide Matthew
 
-        "Okay, player. Before you proceed to the quiz day of [playername], Adrian, Mark, and Christian, I want you
-        to help [playername] to get the best score possible for tomorrow's quiz. The [playername]'s fate
-        for tomorrow's quiz is in your hands now so you better learn the lessons right away, ok?"
-
-        menu:
-            "Yes, man. It's time for me to study!":
-                jump study
-
-            "No way highway!":
-                jump noway
-
-    return
+        jump study
 
     label study:
 
         show Bedroom
 
-        "Okay so you have finally decided to study, player. In that case,
+        "Okay so you have finally decided to study, [playername]. In that case,
         I will be providing you the images of the lessons that you
         need to learn. Good luck and happy studying!"
 
@@ -1764,10 +1754,6 @@ label start:
 
     label studychoicesSHS:
 
-        default L1SHSx= False
-        default L2SHSy= False
-        default L3SHSz= False
-
         hide black
 
         $renpy.music.play("audio/More Feels.mp3", loop=True)
@@ -1775,100 +1761,18 @@ label start:
         show Bedroom
 
         menu:
-            "Which of the following lessons should you study?"
+            "Which of the following lessons would you like to study?"
 
-            "Lesson 1: Fundamental Considerations on Text Production and Consumption" if not L1SHSx:
-                $ L1SHSx= True
+            "Lesson 1: Fundamental Considerations on Text Production and Consumption":
                 jump L1SHS
 
-            "Lesson 2: Note Taking and Citation" if not L2SHSy:
-                $ L2SHSy= True
+            "Lesson 2: Note Taking and Citation":
                 jump L2SHS
 
-            "Lesson 3: The Reaction Paper, Review, and Critique" if not L3SHSz:
-                $ L3SHSz= True
+            "Lesson 3: The Reaction Paper, Review, and Critique":
                 jump L3SHS
 
-            "Call it a day":
-                jump ready
-
     return
-
-    label noway:
-        $renpy.music.play("audio/More Feels.mp3", loop=True)
-
-        show Bedroom
-
-        player "Unfortunately, I lost the drive to study today even if I feel like I want to study a while ago."
-
-        "And this is the response of the [playername]'s friends in unison:"
-
-        "Same here!"
-
-        player "That's awesome. That is unexpected for sure. So what should we do today that does not include
-        studying?"
-
-        menu:
-
-            "Play computer games":
-                jump computergames
-
-            "Watch movies together":
-                jump movie
-
-    return
-
-    label computergames:
-
-        show Bedroom
-
-        "[playername] turned on the computer."
-
-        "And so they played computer games for the rest of the day until the friends of [playername] decided to go home
-        when evening came."
-
-        hide Bedroom
-
-        show black
-
-        "They ended the day without studying for their tomorrow's quiz."
-
-        "Playing games is a fun thing to do. However, if you have to study for your tomorrow's quiz or exam,
-        you better study first before playing games."
-
-        "Games will always be there so always focus on more important things.
-        \n-Wrichmond"
-
-        hide black
-
-        jump quizdaySHS
-
-    return
-
-    label movie:
-
-        show Bedroom
-
-        "[playername] turned on the computer and opened the RedFlix app."
-
-        "And so they watched movies together for the rest of the day until the friends of [playername]
-        decided to go home when evening came."
-
-        hide Bedroom
-
-        show black
-
-        "They ended the day without studying for their tomorrow's quiz."
-
-        "Watching movies is a fun thing to do. However, if you have to study for your tomorrow's quiz or exam,
-        you better study first before playing games."
-
-        "Movies will always be there so always focus on more important things.
-        \n-Wrichmond"
-
-        hide black
-
-        jump quizdaySHS
 
     label L1SHS:
 
@@ -1982,9 +1886,9 @@ label start:
 
         show black
 
-        "You may now proceed to the next lesson."
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump studychoicesSHS
+        jump quizdaySHS
 
     return
 
@@ -2160,9 +2064,9 @@ label start:
 
         show black
 
-        "You may now proceed to the next lesson."
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump studychoicesSHS
+        jump quizdaySHS
 
     return
 
@@ -2204,54 +2108,13 @@ label start:
 
         show black
 
-        "You may now proceed to the next lesson."
-
-        jump studychoicesSHS
-
-    return
-
-    label ready:
-        "And so [playername] and friends finally finished studying for tomorrow's quiz. Player,
-        thank you for studying the lessons as well."
-
-        show Martin
-
-        martin "Okay, [playername], it's time for us to go home. We need to go home immediately
-        before it gets dark. Goodbye, [playername]. See you tomorrow."
-
-        hide Martin
-
-        player "Goodbye, my friends. See you tomorrow at school. Let us do our best tomorrow."
-
-        show Matthew
-
-        matthew "Alright then, goodbye."
-
-        hide Matthew
-
-        "And so the day has ended that way. We may never know what lies ahead, but we should keep on going and
-        we should also do our best."
-
-        stop music
-
-        hide Bedroom
-
-        show black
-
-        "Good luck on your quiz, [playername], Martin, Matthew, and Allen"
-
-        hide black
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
         jump quizdaySHS
 
     return
 
     label quizdaySHS:
-        show black
-
-        "The next day"
-
-        hide black
 
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
 
@@ -3278,7 +3141,7 @@ label start:
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
         scene campus
 
-        "There are four friends named Martin, Matthew, Allen, and [playername]. They went to school together today.
+        "There are four friends named Adrian, Mark, Christian, and [playername]. They went to school together today.
         All of them are grade 11 Senior High School students at Belridge Senior High School and they belong to 11-A class."
 
         stop music
@@ -3964,86 +3827,7 @@ label start:
             "Yes, man. It's time for me to study!":
                 jump study2
 
-            "No way highway!":
-                jump noway2
-
     return
-
-    label noway2:
-        $renpy.music.play("audio/More Feels.mp3", loop=True)
-
-        show Bedroom
-
-        player "Unfortunately, I lost the drive to study today even if I feel like I want to study a while ago."
-
-        "And this is the response of the [playername]'s friends in unison:"
-
-        "Same here!"
-
-        player "That's awesome. That is unexpected for sure. So what should we do today that does not include
-        studying?"
-
-        menu:
-            "Play computer games":
-                jump computergames2
-
-            "Watch movies together":
-                jump movie2
-
-    return
-
-    label computergames2:
-
-        show Bedroom
-
-        "[playername] turned on the computer."
-
-        "And so they played computer games for the rest of the day until the friends of [playername] decided to go home
-        when evening came."
-
-        hide Bedroom
-
-        show black
-
-        "They ended the day without studying for their tomorrow's quiz."
-
-        "Playing games is a fun thing to do. However, if you have to study for your tomorrow's quiz or exam,
-        you better study first before playing games."
-
-        "Games will always be there so always focus on more important things.
-        \n-Wrichmond"
-
-        hide black
-
-        jump quizdayCollege
-
-    return
-
-    label movie2:
-
-        show Bedroom
-
-        "[playername] turned on the computer and opened the RedFlix app."
-
-        "And so they watched movies together for the rest of the day until the friends of [playername]
-        decided to go home when evening came."
-
-        hide Bedroom
-
-        show black
-
-        "They ended the day without studying for their tomorrow's quiz."
-
-        "Watching movies is a fun thing to do. However, if you have to study for your tomorrow's quiz or exam,
-        you better study first before playing games."
-
-        "Movies will always be there so always focus on more important things.
-        \n-Wrichmond"
-
-        hide black
-
-        jump quizdayCollege
-
 
     label study2:
 
@@ -4058,9 +3842,6 @@ label start:
     return
 
     label studychoicesCollege:
-        default L1Collegex= False
-        default L2Collegey= False
-        default L3Collegez= False
 
         hide black
 
@@ -4071,20 +3852,14 @@ label start:
         menu:
             "Which of the following lessons should you study?"
 
-            "Lesson 1: Concept Paper" if not L1Collegex:
-                $L1Collegex= True
+            "Lesson 1: Concept Paper":
                 jump L1College
 
-            "Lesson 2: Position Paper (Part 1)" if not L2Collegey:
-                $L2Collegey= True
+            "Lesson 2: Position Paper (Part 1)":
                 jump L2College
 
-            "Lesson 3: Position Paper (Part 2)" if not L3Collegez:
-                $L3Collegez= True
+            "Lesson 3: Position Paper (Part 2)":
                 jump L3College
-
-            "Call it a day":
-                jump ready2
 
     return
 
@@ -4197,9 +3972,9 @@ label start:
 
         show black
 
-        "You may now proceed to the next lesson."
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump studychoicesCollege
+        jump quizdayCollege
 
     return
 
@@ -4249,9 +4024,9 @@ label start:
 
         show black
 
-        "You may now proceed to the next lesson."
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump studychoicesCollege
+        jump quizdayCollege
 
 
     return
@@ -4302,55 +4077,13 @@ label start:
 
         show black
 
-        "You may now proceed to the next lesson."
-
-        jump studychoicesCollege
-
-    return
-
-    label ready2:
-        "And so [playername] and friends finally finished studying for tomorrow's quiz. Player,
-        thank you for studying the lessons as well."
-
-        show Adrian
-
-        adrian "Okay, [playername], it's time for us to go home. We need to go home immediately
-        before it gets dark. Goodbye, [playername]. See you tomorrow."
-
-        hide Adrian
-
-        player "Goodbye, my friends. See you tomorrow at school. Let us do our best tomorrow."
-
-        show Mark
-
-        mark "Alright then, goodbye."
-
-        hide Mark
-
-        "And so the day has ended that way. We may never know what lies ahead, but we should keep on going and
-        we should also do our best."
-
-        stop music
-
-        hide Bedroom
-
-        show black
-
-        "Good luck on your quiz, [playername], Adrian, Mark, and Christian"
-
-        hide black
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
         jump quizdayCollege
 
     return
 
     label quizdayCollege:
-
-        show black
-
-        "The next day"
-
-        hide black
 
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
 
