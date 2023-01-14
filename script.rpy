@@ -4,7 +4,9 @@
 # Blue colour for male characters and for general characters and Pink colour for female characters.
 #0040ff- Blue
 #ff00ff- Pink
-default score= 0
+default scoreL1SHS= 0
+default scoreL2SHS= 0
+default scoreL3SHS= 0
 default scorepopquiz= 0
 
 #shs and college pop quiz
@@ -94,7 +96,7 @@ image L1SHS8= "SHSLessons/L1SHS8.png"
 image L1SHS9= "SHSLessons/L1SHS9.png"
 image L1SHS10= "SHSLessons/L1SHS10.png"
 image L1SHS11= "SHSLessons/L1SHS11.png"
-image L2SHS= "SHSLessons/L2SHS.png"
+image L2SHS= "SHSLessons/L2SHS.jpg"
 image L2SHS2= "SHSLessons/L2SHS2.png"
 image L2SHS3= "SHSLessons/L2SHS3.png"
 image L2SHS4= "SHSLessons/L2SHS4.png"
@@ -104,17 +106,16 @@ image L2SHS7= "SHSLessons/L2SHS7.png"
 image L2SHS8= "SHSLessons/L2SHS8.png"
 image L2SHS9= "SHSLessons/L2SHS9.png"
 image L2SHS10= "SHSLessons/L2SHS10.png"
-image L2SHS11= "SHSLessons/L2SHS11.png"
-image L2SHS12= "SHSLessons/L2SHS12.png"
-image L2SHS13= "SHSLessons/L2SHS13.png"
-image L2SHS14= "SHSLessons/L2SHS14.png"
-image L2SHS15= "SHSLessons/L2SHS15.png"
-image L2SHS16= "SHSLessons/L2SHS16.png"
-image L2SHS17= "SHSLessons/L2SHS17.png"
-image L2SHS18= "SHSLessons/L2SHS18.png"
-image L3SHS= "SHSLessons/L3SHS.png"
+image L3SHS= "SHSLessons/L3SHS.jpg"
 image L3SHS2= "SHSLessons/L3SHS2.png"
 image L3SHS3= "SHSLessons/L3SHS3.png"
+image L3SHS4= "SHSLessons/L3SHS4.png"
+image L3SHS5= "SHSLessons/L3SHS5.png"
+image L3SHS6= "SHSLessons/L3SHS6.png"
+image L3SHS7= "SHSLessons/L3SHS7.png"
+image L3SHS8= "SHSLessons/L3SHS8.png"
+image L3SHS9= "SHSLessons/L3SHS9.png"
+image L3SHS10= "SHSLessons/L3SHS10.png"
 image Mechanics1= "Mechanics1.png"
 image Mechanics2= "Mechanics2.png"
 #
@@ -224,41 +225,21 @@ label start:
         menu:
 
             "A. William Shakespeare":
-                jump a1popquizshs
+                call popquizwronganswershs1
             "B. Oscar Wilde":
-                jump b1popquizshs
+                call popquizwronganswershs1
             "C. Rudyard Kipling":
-                jump c1popquizshs
+                call popquizwronganswershs1
             "D. Peter Griffin":
-                jump d1popquizshs
+                call popquizcorrectanswershs1
 
     return
 
-
-    label a1popquizshs:
+    label popquizwronganswershs1:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Peter Griffin{/b}. You may now proceed to Question no. 2."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question2PopQuizSHS
-    return
-
-    label b1popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Peter Griffin{/b}. You may now proceed to Question no. 2."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question2PopQuizSHS
-    return
-
-    label c1popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Peter Griffin{/b}. You may now proceed to Question no. 2."
+        "Your answer is incorrect. The correct answer is {b}D. Peter Griffin{/b}.
+        You may now proceed to Question no. 2."
         $ scorepopquiz +=0
         stop sound
         stop music
@@ -266,7 +247,7 @@ label start:
 
     return
 
-    label d1popquizshs:
+    label popquizcorrectanswershs1:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 2."
@@ -278,7 +259,8 @@ label start:
 
     label question1popquizshs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}D. Peter Griffin{/b}. You may now proceed to Question no. 2."
+        "Unfortunately, you ran out of time. The correct answer is {b}D. Peter Griffin{/b}.
+        You may now proceed to Question no. 2."
         $ scorepopquiz +=0
         stop sound
         stop music
@@ -303,53 +285,34 @@ label start:
         menu:
 
             "A. He":
-                jump a2popquizshs
+                call popquizcorrectanswershs2
             "B. Was":
-                jump b2popquizshs
+                call popquizwronganswershs2
             "C. Below":
-                jump c2popquizshs
+                call popquizwronganswershs2
             "D. Under":
-                jump d2popquizshs
+                call popquizwronganswershs2
 
     return
 
 
-    label a2popquizshs:
+    label popquizwronganswershs2:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. He{/b}.
+        You may now proceed to Question no. 3."
+        $ scorepopquiz +=0
+        stop sound
+        stop music
+        jump Question3PopQuizSHS
+
+    return
+
+    label popquizcorrectanswershs2:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 3."
         $ scorepopquiz +=1
-        stop sound
-        stop music
-        jump Question3PopQuizSHS
-    return
-
-    label b2popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. He{/b}. You may now proceed to Question no. 3."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question3PopQuizSHS
-    return
-
-    label c2popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. He{/b}. You may now proceed to Question no. 3."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question3PopQuizSHS
-
-    return
-
-    label d2popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. He{/b}. You may now proceed to Question no. 3."
-        $ scorepopquiz +=0
         stop sound
         stop music
         jump Question3PopQuizSHS
@@ -382,52 +345,33 @@ label start:
         menu:
 
             "A. Leaved":
-                jump a3popquizshs
+                call popquizwronganswershs3
             "B. Lived":
-                jump b3popquizshs
+                call popquizwronganswershs3
             "C. Left":
-                jump c3popquizshs
+                call popquizcorrectanswershs3
             "D. Leaves":
-                jump d3popquizshs
+                call popquizwronganswershs3
 
     return
 
-    label a3popquizshs:
+    label popquizwronganswershs3:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Left{/b}. You may now proceed to Question no. 4."
+        "Your answer is incorrect. The correct answer is {b}C. Left{/b}.
+        You may now proceed to Question no. 4."
         $ scorepopquiz +=0
         stop sound
         stop music
         jump Question4PopQuizSHS
+
     return
 
-    label b3popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Left{/b}. You may now proceed to Question no. 4."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question4PopQuizSHS
-    return
-
-    label c3popquizshs:
+    label popquizcorrectanswershs3:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 4."
         $ scorepopquiz +=1
-        stop sound
-        stop music
-        jump Question4PopQuizSHS
-
-    return
-
-    label d3popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Left{/b}. You may now proceed to Question no. 4"
-        $ scorepopquiz +=0
         stop sound
         stop music
         jump Question4PopQuizSHS
@@ -460,41 +404,21 @@ label start:
         menu:
 
             "A. Common Noun":
-                jump a4popquizshs
+                call popquizwronganswershs4
             "B. Proper Noun":
-                jump b4popquizshs
+                call popquizcorrectanswershs4
             "C. Verb":
-                jump c4popquizshs
+                call popquizwronganswershs4
             "D. Pronoun":
-                jump d4popquizshs
+                call popquizwronganswershs4
 
     return
 
-
-    label a4popquizshs:
+    label popquizwronganswershs4:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Proper Noun{/b}. You may now proceed to Question no. 5."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question5PopQuizSHS
-    return
-
-    label b4popquizshs:
-        hide screen countdown
-        play sound "audio/Correct Answer sfx.mp3"
-        "Your answer is correct! You may now proceed to Question no. 5."
-        $ scorepopquiz +=1
-        stop sound
-        stop music
-        jump Question5PopQuizSHS
-    return
-
-    label c4popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Proper Noun{/b}. You may now proceed to Question no. 5."
+        "Your answer is incorrect. The correct answer is {b}B. Proper Noun{/b}.
+        You may now proceed to Question no. 5."
         $ scorepopquiz +=0
         stop sound
         stop music
@@ -502,19 +426,21 @@ label start:
 
     return
 
-    label d4popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Proper Noun{/b}. You may now proceed to Question no. 5."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump Question5PopQuizSHS
+    label popquizcorrectanswershs4:
+    hide screen countdown
+    play sound "audio/Correct Answer sfx.mp3"
+    "Your answer is correct! You may now proceed to Question no. 5."
+    $ scorepopquiz +=1
+    stop sound
+    stop music
+    jump Question5PopQuizSHS
+
     return
 
     label question4popquizshs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}B. Proper Noun{/b}. You may now proceed to Question no. 4."
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Proper Noun{/b}.
+        You may now proceed to Question no. 5."
         $ scorepopquiz +=0
         stop sound
         stop music
@@ -539,57 +465,33 @@ label start:
         menu:
 
             "A. Emily Dickenson":
-                jump a5popquizshs
+                call popquizwronganswershs5
             "B. Charlie Chaplin":
-                jump b5popquizshs
+                call popquizwronganswershs5
             "C. Dr. Seuss":
-                jump c5popquizshs
+                call popquizwronganswershs5
             "D. Cecil Frances Alexander":
-                jump d5popquizshs
+                call popquizcorrectanswershs5
 
     return
 
 
-    label a5popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Cecil Frances Alexander{/b}.
-        And this is the end of the pop quiz, let us now see the results."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump ResultsPopQuizSHS
-    return
-
-    label b5popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Cecil Frances Alexander{/b}.
-        And this is the end of the pop quiz, let us now see the results."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump ResultsPopQuizSHS
-    return
-
-    label c5popquizshs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Cecil Frances Alexander{/b}.
-        And this is the end of the pop quiz, let us now see the results."
-        $ scorepopquiz +=0
-        stop sound
-        stop music
-        jump ResultsPopQuizSHS
-
-    return
-
-    label d5popquizshs:
+    label popquizcorrectanswershs5:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
-        "Your answer is correct! And this is the end of the pop quiz, let us
-        now see the results."
+        "Your answer is correct! And this is the end of the pop quiz, let us now see the results."
         $ scorepopquiz +=1
+        stop sound
+        stop music
+        jump ResultsPopQuizSHS
+
+    return
+
+    label popquizwronganswershs5:
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}D. Cecil Frances Alexander{/b}.
+        And this is the end of the pop quiz, let us now see the results."
+        $ scorepopquiz +=0
         stop sound
         stop music
         jump ResultsPopQuizSHS
@@ -656,18 +558,18 @@ label start:
         menu:
 
             "A. he":
-                jump a1popquizcollege
+                call popquizwronganswercollege1
             "B. they":
-                jump b1popquizcollege
+                call popquizwronganswercollege1
             "C. his":
-                jump c1popquizcollege
+                call popquizwronganswercollege1
             "D. him":
-                jump d1popquizcollege
+                call popquizcorrectanswercollege1
 
     return
 
 
-    label a1popquizcollege:
+    label popquizwronganswercollege1:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}D. him{/b}. You may now proceed to Question no. 2."
@@ -677,28 +579,8 @@ label start:
         jump Question2PopQuizCollege
     return
 
-    label b1popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. him{/b}. You may now proceed to Question no. 2."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question2PopQuizCollege
-    return
 
-    label c1popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. him{/b}. You may now proceed to Question no. 2."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question2PopQuizCollege
-
-    return
-
-    label d1popquizcollege:
+    label popquizcorrectanswercollege1:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 2."
@@ -735,18 +617,18 @@ label start:
         menu:
 
             "A. True":
-                jump a2popquizcollege
+                call popquizcorrectanswercollege2
             "B. False":
-                jump b2popquizcollege
+                call popquizwronganswercollege2
             "C. Maybe":
-                jump c2popquizcollege
+                call popquizwronganswercollege2
             "D. No Idea":
-                jump d2popquizcollege
+                call popquizwronganswercollege2
 
     return
 
 
-    label a2popquizcollege:
+    label popquizcorrectanswercollege2:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 3."
@@ -756,17 +638,8 @@ label start:
         jump Question3PopQuizCollege
     return
 
-    label b2popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. True{/b}. You may now proceed to Question no. 3."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question3PopQuizCollege
-    return
 
-    label c2popquizcollege:
+    label popquizwronganswercollege2:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}A. True{/b}. You may now proceed to Question no. 3."
@@ -775,16 +648,6 @@ label start:
         stop music
         jump Question3PopQuizCollege
 
-    return
-
-    label d2popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. True{/b}. You may now proceed to Question no. 3."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question3PopQuizCollege
     return
 
     label question2popquizcollege_slow:
@@ -813,18 +676,18 @@ label start:
         menu:
 
             "A. Little Women":
-                jump a3popquizcollege
+                call popquizwronganswercollege3
             "B. Lord of the Rings":
-                jump b3popquizcollege
+                call popquizwronganswercollege3
             "C. Pride and Prejudice":
-                jump c3popquizcollege
+                call popquizcorrectanswercollege3
             "D. Twilight":
-                jump d3popquizcollege
+                call popquizwronganswercollege3
 
     return
 
 
-    label a3popquizcollege:
+    label popquizwronganswercollege3:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}C. Pride and Prejudice{/b}. You may now proceed to Question no. 4."
@@ -834,17 +697,8 @@ label start:
         jump Question4PopQuizCollege
     return
 
-    label b3popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Pride and Prejudice{/b}. You may now proceed to Question no. 4."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question4PopQuizCollege
-    return
 
-    label c3popquizcollege:
+    label popquizcorrectanswercollege3:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 4."
@@ -853,16 +707,6 @@ label start:
         stop music
         jump Question4PopQuizCollege
 
-    return
-
-    label d3popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Pride and Prejudice{/b}. You may now proceed to Question no. 4."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question4PopQuizCollege
     return
 
     label question3popquizcollege_slow:
@@ -892,18 +736,17 @@ label start:
         menu:
 
             "A. Genesis":
-                jump a4popquizcollege
+                call popquizwronganswercollege4
             "B. Deuteronomy":
-                jump b4popquizcollege
+                call popquizcorrectanswercollege4
             "C. Revelation":
-                jump c4popquizcollege
+                call popquizwronganswercollege4
             "D. Psalm":
-                jump d4popquizcollege
-
+                call popquizwronganswercollege4
     return
 
 
-    label a4popquizcollege:
+    label popquizwronganswercollege4:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}B. Deuteronomy{/b}. You may now proceed to Question no. 5."
@@ -913,32 +756,11 @@ label start:
         jump Question5PopQuizCollege
     return
 
-    label b4popquizcollege:
+    label popquizcorrectanswercollege4:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 5."
         $ score +=1
-        stop sound
-        stop music
-        jump Question5PopQuizCollege
-    return
-
-    label c4popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Deuteronomy{/b}. You may now proceed to Question no. 5."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question5PopQuizCollege
-
-    return
-
-    label d4popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Deuteronomy{/b}. You may now proceed to Question no. 5."
-        $ score +=0
         stop sound
         stop music
         jump Question5PopQuizCollege
@@ -971,18 +793,18 @@ label start:
         menu:
 
             "A. My Life":
-                jump a5popquizcollege
+                call popquizwronganswercollege5
             "B. My House":
-                jump b5popquizcollege
+                call popquizwronganswercollege5
             "C. My Money":
-                jump c5popquizcollege
+                call popquizwronganswercollege5
             "D. My Struggle":
-                jump d5popquizcollege
+                call popquizcorrectanswercollege5
 
     return
 
 
-    label a5popquizcollege:
+    label popquizwronganswercollege5:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}D. My Struggle{/b}.
@@ -993,30 +815,7 @@ label start:
         jump ResultsPopQuizCollege
     return
 
-    label b5popquizcollege:
-        hide screen countdown
-        play sound "audio/Correct Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. My Struggle{/b}.
-        And this is the end of the pop quiz, let us now see the results."
-        $ score +=0
-        stop sound
-        stop music
-        jump ResultsPopQuizCollege
-    return
-
-    label c5popquizcollege:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. My Struggle{/b}.
-        And this is the end of the pop quiz, let us now see the results."
-        $ score +=0
-        stop sound
-        stop music
-        jump ResultsPopQuizCollege
-
-    return
-
-    label d5popquizcollege:
+    label popquizcorrectanswercollege5:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! And this is the end of the pop quiz, let us
@@ -1766,10 +1565,10 @@ label start:
             "Lesson 1: Fundamental Considerations on Text Production and Consumption":
                 jump L1SHS
 
-            "Lesson 2: Note Taking and Citation":
+            "Lesson 2: Note Taking":
                 jump L2SHS
 
-            "Lesson 3: The Reaction Paper, Review, and Critique":
+            "Lesson 3: The Citation, Reaction Paper, Review, and Critique":
                 jump L3SHS
 
     return
@@ -1888,7 +1687,7 @@ label start:
 
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump quizdaySHS
+        jump quizdaySHS1
 
     return
 
@@ -1988,78 +1787,6 @@ label start:
 
         hide L2SHS10
 
-
-        show L2SHS11
-
-        window hide
-
-        pause
-
-        hide L2SHS11
-
-
-        show L2SHS12
-
-        window hide
-
-        pause
-
-        hide L2SHS12
-
-
-        show L2SHS13
-
-        window hide
-
-        pause
-
-        hide L2SHS13
-
-
-        show L2SHS14
-
-        window hide
-
-        pause
-
-        hide L2SHS14
-
-
-        show L2SHS15
-
-        window hide
-
-        pause
-
-        hide L2SHS15
-
-
-        show L2SHS16
-
-        window hide
-
-        pause
-
-        hide L2SHS16
-
-
-        show L2SHS17
-
-        window hide
-
-        pause
-
-        hide L2SHS17
-
-
-        show L2SHS18
-
-        window hide
-
-        pause
-
-        hide L2SHS18
-
         stop music
 
         show black
@@ -2104,6 +1831,69 @@ label start:
 
         hide L3SHS3
 
+
+        show L3SHS4
+
+        window hide
+
+        pause
+
+        hide L3SHS4
+
+
+        show L3SHS5
+
+        window hide
+
+        pause
+
+        hide L3SHS5
+
+
+        show L3SHS6
+
+        window hide
+
+        pause
+
+        hide L3SHS6
+
+
+        show L3SHS7
+
+        window hide
+
+        pause
+
+        hide L3SHS7
+
+
+        show L3SHS8
+
+        window hide
+
+        pause
+
+        hide L3SHS8
+
+
+        show L3SHS9
+
+        window hide
+
+        pause
+
+        hide L3SHS9
+
+
+        show L3SHS10
+
+        window hide
+
+        pause
+
+        hide L3SHS10
+
         stop music
 
         show black
@@ -2114,7 +1904,7 @@ label start:
 
     return
 
-    label quizdaySHS:
+    label quizdaySHS1:
 
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
 
@@ -2164,9 +1954,9 @@ label start:
 
         stop music
 
-        jump Question1SHS
+        jump Question1SHSL1
 
-    label Question1SHS:
+    label Question1SHSL1:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question1shs_slow'                    ### set where you want to jump once the timer runs out
@@ -2183,67 +1973,47 @@ label start:
         menu:
 
             "A. Academic Writing":
-                jump a1shs
+                call L1wronganswershs1
             "B. Formal Writing":
-                jump b1shs
+                call L1wronganswershs1
             "C. Signposts":
-                jump c1shs
+                call L1correctanswershs1
             "D. Academic Language":
-                jump d1shs
+                call L1wronganswershs1
 
     return
 
 
-    label a1shs:
+    label L1wronganswershs1:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}C. Signposts{/b}. You may now proceed to Question no. 2."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question2SHS
     return
 
-    label b1shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Signposts{/b}. You may now proceed to Question no. 2."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question2SHS
-    return
-
-    label c1shs:
+    label L1correctanswershs1:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 2."
-        $ score +=1
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question2SHS
 
-    return
-
-    label d1shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Signposts{/b}. You may now proceed to Question no. 2."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question2SHS
     return
 
     label question1shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}C. Signposts{/b}. You may now proceed to Question no. 2."
-        $ score +=0
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Signposts{/b}.
+        You may now proceed to Question no. 2."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question2SHS
     return
-
 
 
     label Question2SHS:
@@ -2252,9 +2022,7 @@ label start:
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question2shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question2SHS "It has a unique set of rules: it should be explicit,
-        formal and factual as well as objective and analytical in nature."
-
+        Question2SHS "The verbs are made central as they denote action."
         jump q2shs
     return
 
@@ -2264,53 +2032,33 @@ label start:
 
         menu:
 
-            "A. Formal Writing":
-                jump a2shs
-            "B. Academic Writing":
-                jump b2shs
-            "C. Academic Language":
-                jump c2shs
-            "D. Structure":
-                jump d2shs
+            "A. Nominalization":
+                call L1correctanswershs2
+            "B. Passivization":
+                call L1wronganswershs2
+            "C. Explicitness":
+                call L1wronganswershs2
+            "D. Objectivity":
+                call L1wronganswershs2
 
     return
 
-    label a2shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Academic Language{/b}. You may now proceed to Question no. 3."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question3SHS
-    return
-
-    label b2shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Academic Language{/b}. You may now proceed to Question no. 3."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question3SHS
-    return
-
-    label c2shs:
+    label L1correctanswershs2:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 3."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question3SHS
     return
 
-    label d2shs:
+    label L1wronganswershs2:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Academic Language{/b}.
+        "Your answer is incorrect. The correct answer is {b}A. Nominalization{/b}.
         You may now proceed to Question no. 3."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question3SHS
@@ -2318,15 +2066,13 @@ label start:
 
     label question2shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}C. Academic Language{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Nominalization{/b}.
         You may now proceed to Question no. 3."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question3SHS
     return
-
-
 
 
     label Question3SHS:
@@ -2335,7 +2081,7 @@ label start:
         $ timer_range = 10                            ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question3shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question3SHS "The verbs are made central as they denote action."
+        Question3SHS "Which of the following is true about Academic Writing?"
         jump q3shs
     return
 
@@ -2346,52 +2092,34 @@ label start:
 
         menu:
 
-            "A. Nominalization":
-                jump a3shs
-            "B. Passivization":
-                jump b3shs
-            "C. Explicitness":
-                jump c3shs
-            "D. Objectivity":
-                jump d3shs
+            "A. It requires considerable effort to construct meaningful sentences,
+            paragraphs, and arguments that make the text easy to comprehend.":
+                call L1wronganswershs3
+            "B. It reflects your dignified stance in writing as a member of the academic community.":
+                call L1wronganswershs3
+            "C. It is used to avoid redundancy.":
+                call L1wronganswershs3
+            "D. It is based on research and not on the writer’s own opinion about a given topic.":
+                call L1correctanswershs3
 
     return
 
-    label a3shs:
+    label L1correctanswershs3:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 4."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question4SHS
     return
 
-    label b3shs:
+    label L1wronganswershs3:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Nominalization{/b}. You may now proceed to Question no. 4."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question4SHS
-    return
-
-    label c3shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Nominalization{/b}. You may now proceed to Question no. 4."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question4SHS
-    return
-
-    label d3shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Nominalization{/b}. You may now proceed to Question no. 4."
-        $ score +=0
+        "Your answer is incorrect. The correct answer is {b}D. It is based on research and not on the writer’s own opinion
+        about a given topic.{/b} You may now proceed to Question no. 4."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question4SHS
@@ -2399,9 +2127,10 @@ label start:
 
     label question3shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}A. Nominalization{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}D. It is based on research and not on the writer’s own opinion
+        about a given topic.{/b}
         You may now proceed to Question no. 4."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question4SHS
@@ -2416,7 +2145,7 @@ label start:
         $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question4shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question4SHS "Which of the following is true about Academic Writing?"
+        Question4SHS "In combining ideas effectively, you will need to avoid redundancy."
         jump q4shs
     return
 
@@ -2427,72 +2156,46 @@ label start:
 
         menu:
 
-            "A. It requires considerable effort to construct meaningful sentences,
-            paragraphs, and arguments that make the text easy to comprehend.":
-                jump a4shs
-            "B. It reflects your dignified stance in writing as a member of the academic community.":
-                jump b4shs
-            "C. It is used to avoid redundancy.":
-                jump c4shs
-            "D. It is based on research and not on the writer’s own opinion about a given topic.":
-                jump d4shs
+            "A. Structure":
+                call L1correctanswershs4
+            "B. Formality":
+                call L1wronganswershs4
+            "C. Objectivity":
+                call L1wronganswershs4
+            "D. Explicitiness":
+                call L1wronganswershs4
 
     return
 
-    label a4shs:
+    label L1wronganswershs4:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. It is based on research and
-        not on the writer’s own opinion about a given topic.{/b}You may now proceed to Question no. 5."
-        $ score +=0
+        "Your answer is incorrect. The correct answer is {b}A. Structure{/b}. You may now proceed to Question no. 5."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question5SHS
     return
 
-    label b4shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. It is based on research and
-        not on the writer’s own opinion about a given topic.{/b}You may now proceed to Question no. 5."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question5SHS
-    return
-
-    label c4shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. It is based on research and
-        not on the writer’s own opinion about a given topic.{/b}You may now proceed to Question no. 5."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question5SHS
-    return
-
-    label d4shs:
+    label L1correctanswershs4:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 5."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question5SHS
     return
 
-    label question4shs_slow:
+    label L1question4shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}D. It is based on research and
-        not on the writer’s own opinion about a given topic.{/b}You may now proceed to Question no. 5."
-        $ score +=0
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Structure{/b}.
+        You may now proceed to Question no. 5."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question5SHS
     return
-
-
 
     label Question5SHS:
         hide screen countdown
@@ -2500,8 +2203,7 @@ label start:
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question5shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question5SHS "In note-taking, it is one of the simplest and most common ways to take notes.
-        Points and keywords are written down in a hierarchical structure."
+        Question5SHS "Reflects your dignified stance in writing as a member of the academic community."
         jump q5shs
     return
 
@@ -2512,52 +2214,32 @@ label start:
 
         menu:
 
-            "A. Charting":
-                jump a5shs
-            "B. Outlining ":
-                jump b5shs
-            "C. Mapping":
-                jump c5shs
-            "D. Plagiarism":
-                jump d5shs
+            "A. Structure":
+                call L1wronganswershs5
+            "B. Formality":
+                call L1correctanswershs5
+            "C. Objectivity":
+                call L1wronganswershs5
+            "D. Explicitness":
+                call L1wronganswershs5
 
     return
 
-    label a5shs:
+    label L1wronganswershs5:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Outlining{/b}. You may now proceed to Question no. 6."
-        $ score +=0
+        "Your answer is incorrect. The correct answer is {b}B. Formality{/b}. You may now proceed to Question no. 6."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question6SHS
     return
 
-    label b5shs:
+    label L1correctanswershs5:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 6."
-        $ score +=1
-        stop sound
-        stop music
-        jump Question6SHS
-    return
-
-    label c5shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Outlining{/b}. You may now proceed to Question no. 6."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question6SHS
-    return
-
-    label d5shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Outlining{/b}. You may now proceed to Question no. 6."
-        $ score +=0
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question6SHS
@@ -2565,8 +2247,9 @@ label start:
 
     label question5shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}B. Outlining{/b}. You may now proceed to Question no. 6."
-        $ score +=0
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Formality{/b}.
+        You may now proceed to Question no. 6."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question6SHS
@@ -2580,7 +2263,7 @@ label start:
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question6shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question6SHS "What does SQ4R as a method of note-taking stands for?"
+        Question6SHS "It refers to the impersonal and certain level of distance."
         jump q6shs
     return
 
@@ -2591,55 +2274,33 @@ label start:
 
         menu:
 
-            "A. Survey, Quality, Realism, Recitation, Reliable, Review":
-                jump a6shs
-            "B. Service, Quality, Read, Recital, Review, Respectful":
-                jump b6shs
-            "C. Salmon, Queen, Rider, Rangers, Reload, Rendering":
-                jump c6shs
-            "D. Survey, Questions, Read, Recite, Relate, Review":
-                jump d6shs
+            "A. Structure":
+                call L1wronganswershs6
+            "B. Formality":
+                call L1wronganswershs6
+            "C. Objectivity":
+                call L1correctanswershs6
+            "D. Explicitness":
+                call L1wronganswershs6
 
     return
 
-    label a6shs:
+    label L1wronganswershs6:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Survey, Questions, Read, Recite, Relate, Review{/b}.
+        "Your answer is incorrect. The correct answer is {b}C. Objectivity{/b}.
         You may now proceed to Question no. 7."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question7SHS
     return
 
-    label b6shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Survey, Questions, Read, Recite, Relate, Review{/b}.
-        You may now proceed to Question no. 7."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question7SHS
-    return
-
-    label c6shs:
-        hide screen countdown
-        play sound "audio/Wrong answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Survey, Questions, Read, Recite, Relate, Review{/b}.
-        You may now proceed to Question no. 7."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question7SHS
-    return
-
-    label d6shs:
+    label L1correctanswershs6:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 7."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question7SHS
@@ -2647,15 +2308,13 @@ label start:
 
     label question6shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}D. Survey, Questions, Read, Recite, Relate, Review{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Objectivity{/b}.
         You may now proceed to Question no. 7."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question7SHS
     return
-
-
 
     label Question7SHS:
         hide screen countdown
@@ -2663,7 +2322,7 @@ label start:
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question7shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question7SHS "Who popularized the Cornell Notes or Cornell Notes System?"
+        Question7SHS "It uses signposts to allow readers to trace the relationships in the parts of a study."
         jump q7shs
     return
 
@@ -2674,51 +2333,32 @@ label start:
 
         menu:
 
-            "A. Walter Pauk":
-                jump a7shs
-            "B. James Sunderland":
-                jump b7shs
-            "C. Heather Mason":
-                jump c7shs
-            "D. Harry Mason":
-                jump d7shs
+            "A. Structure":
+                call L1wronganswershs7
+            "B. Formality":
+                call L1wronganswershs7
+            "C. Objectivity":
+                call L1wronganswershs7
+            "D. Explicitness":
+                call L1correctanswershs7
 
     return
 
-    label a7shs:
+    label L1correctanswershs7:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 8."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question8SHS
     return
 
-    label b7shs:
+    label L1wronganswershs7:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Walter Pauk{/b}. You may now proceed to Question no. 8."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question8SHS
-    return
-
-    label c7shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Walter Pauk{/b}. You may now proceed to Question no. 8."
-        $ score +=0
-        stop sound
-        jump Question8SHS
-    return
-
-    label d7shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Walter Pauk{/b}. You may now proceed to Question no. 8."
-        $ score +=0
+        "Your answer is incorrect. The correct answer is {b}D. Explicitness{/b}. You may now proceed to Question no. 8."
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question8SHS
@@ -2726,15 +2366,13 @@ label start:
 
     label question7shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}A. Walter Pauk{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}D. Explicitness{/b}.
         You may now proceed to Question no. 8."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question8SHS
     return
-
-
 
     label Question8SHS:
         hide screen countdown
@@ -2755,13 +2393,13 @@ label start:
         menu:
 
             "A. Tissue Paper":
-                jump a8shs
+                call a8shs
             "B. Review Paper":
-                jump b8shs
+                call b8shs
             "C. Reaction paper":
-                jump c8shs
+                call c8shs
             "D. I have no idea.":
-                jump d8shs
+                call d8shs
 
     return
 
@@ -2770,7 +2408,7 @@ label start:
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}.
         You may now proceed to Question no. 9."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question9SHS
@@ -2781,7 +2419,7 @@ label start:
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}.
         You may now proceed to Question no. 9."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question9SHS
@@ -2791,7 +2429,7 @@ label start:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 9."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question9SHS
@@ -2802,7 +2440,7 @@ label start:
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}.
         You may now proceed to Question no. 9."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question9SHS
@@ -2812,13 +2450,11 @@ label start:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Reaction paper{/b}.
         You may now proceed to Question no. 9."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question9SHS
     return
-
-
 
     label Question9SHS:
         hide screen countdown
@@ -2826,8 +2462,8 @@ label start:
         $ timer_range = 10                             ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question9shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question9SHS "Expressing your opinion about an event,
-        book, restaurant, art, exhibit, performance, movie, or latest trends is called ______."
+        Question9SHS "It has a unique set of rules: it should be explicit,
+        formal and factual as well as objective and analytical in nature."
         jump q9shs
     return
 
@@ -2838,55 +2474,33 @@ label start:
 
         menu:
 
-            "A. Scratch Paper":
-                jump a9shs
-            "B. Bond Paper":
-                jump b9shs
-            "C. Review Paper":
-                jump c9shs
-            "D. One whole sheet of paper":
-                jump d9shs
+            "A. Formal Writing":
+                call L1wronganswershs9
+            "B. Academic Writing":
+                call L1wronganswershs9
+            "C. Academic Language":
+                call L1correctanswershs9
+            "D. Structure":
+                call L1wronganswershs9
 
     return
 
-    label a9shs:
+    label L1wronganswershs9:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Review Paper{/b}.
+        "Your answer is incorrect. The correct answer is {b}C. Academic Language{/b}.
         You may now proceed to Question no. 10."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question10SHS
     return
 
-    label b9shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Review Paper{/b}.
-        You may now proceed to Question no. 10."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question10SHS
-    return
-
-    label c9shs:
+    label L1correctanswershs9:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 10."
-        $ score +=1
-        stop sound
-        stop music
-        jump Question10SHS
-    return
-
-    label d9shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Review Paper{/b}.
-        You may now proceed to Question no. 10."
-        $ score +=0
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump Question10SHS
@@ -2894,9 +2508,9 @@ label start:
 
     label question9shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}C. Review Paper{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Academic Language{/b}.
         You may now proceed to Question no. 10."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump Question10SHS
@@ -2910,7 +2524,7 @@ label start:
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question10shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question10SHS "How many levels does APA Heading Format (7th ed.) have?."
+        Question10SHS "The results of the action are highlighted."
         jump q10shs
     return
 
@@ -2921,56 +2535,34 @@ label start:
 
         menu:
 
-            "A. 2":
-                jump a10shs
-            "B. 3 ":
-                jump b10shs
-            "C. 4 ":
-                jump c10shs
-            "D. 5":
-                jump d10shs
+            "A. Nominalization":
+                call L1wronganswershs10
+            "B. Passivization":
+                call L1correctanswershs10
+            "C. Explicitiness":
+                call L1wronganswershs10
+            "D. Objectivity":
+                call L1wronganswershs10
 
     return
 
-    label a10shs:
+    label L1wronganswershs10:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. 5{/b}. And this is the end of the quiz, let us
+        "Your answer is incorrect. The correct answer is {b}B. Passivization{/b}. And this is the end of the quiz, let us
         now see the results."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump ResultsSHS
     return
 
-    label b10shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. 5{/b}. And this is the end of the quiz, let us
-        now see the results."
-        $ score +=0
-        stop sound
-        stop music
-        jump ResultsSHS
-    return
-
-    label c10shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. 5{/b}. And this is the end of the quiz, let us
-        now see the results."
-        $ score +=0
-        stop sound
-        stop music
-        jump ResultsSHS
-    return
-
-    label d10shs:
+    label L1correctanswershs10:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! And this is the end of the quiz, let us
         now see the results."
-        $ score +=1
+        $ scoreL1SHS +=1
         stop sound
         stop music
         jump ResultsSHS
@@ -2978,9 +2570,10 @@ label start:
 
     label question10shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}D. 5{/b}. And this is the end of the quiz, let us
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Passivization{/b}.
+        And this is the end of the quiz, let us
         now see the results."
-        $ score +=0
+        $ scoreL1SHS +=0
         stop sound
         stop music
         jump ResultsSHS
@@ -2990,7 +2583,8 @@ label start:
     label ResultsSHS:
         show classroomshs
 
-        "Congratulations, player. Out of {b}10{/b} questions, {b}[playername]{/b} answered {b}[score]{/b} questions. Thanks to you."
+        "Congratulations, player. Out of {b}10{/b} questions, {b}[playername]{/b} answered {b}[score]{/b} questions.
+        Thanks to you."
 
         hide classroomshs
 
