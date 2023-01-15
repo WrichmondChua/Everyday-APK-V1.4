@@ -508,7 +508,7 @@ label start:
     return
 
     label ResultsPopQuizSHS:
-        "Congratulations, player. Out of {b}5{/b} questions, you answered {b}[scorepopquiz]{/b} questions. Enjoy playing
+        "Congratulations, player. Out of 5 questions, you answered {b}[scorepopquiz]{/b} questions. Enjoy playing
         the rest of the game. Good luck and have fun!"
 
         jump shs
@@ -837,7 +837,7 @@ label start:
     return
 
     label ResultsPopQuizCollege:
-        "Congratulations, player. Out of {b}5{/b} questions, you answered {b}[score]{/b} questions. Enjoy playing
+        "Congratulations, player. Out of 5 questions, you answered {b}[score]{/b} questions. Enjoy playing
         the rest of the game. Good luck and have fun!"
 
         jump college
@@ -1900,7 +1900,7 @@ label start:
 
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump quizdaySHS
+        jump quizdaySHS3
 
     return
 
@@ -1973,13 +1973,13 @@ label start:
         menu:
 
             "A. Academic Writing":
-                call L1wronganswershs1
+                jump L1wronganswershs1
             "B. Formal Writing":
-                call L1wronganswershs1
+                jump L1wronganswershs1
             "C. Signposts":
-                call L1correctanswershs1
+                jump L1correctanswershs1
             "D. Academic Language":
-                call L1wronganswershs1
+                jump L1wronganswershs1
 
     return
 
@@ -2033,13 +2033,13 @@ label start:
         menu:
 
             "A. Nominalization":
-                call L1correctanswershs2
+                jump L1correctanswershs2
             "B. Passivization":
-                call L1wronganswershs2
+                jump L1wronganswershs2
             "C. Explicitness":
-                call L1wronganswershs2
+                jump L1wronganswershs2
             "D. Objectivity":
-                call L1wronganswershs2
+                jump L1wronganswershs2
 
     return
 
@@ -2094,13 +2094,13 @@ label start:
 
             "A. It requires considerable effort to construct meaningful sentences,
             paragraphs, and arguments that make the text easy to comprehend.":
-                call L1wronganswershs3
+                jump L1wronganswershs3
             "B. It reflects your dignified stance in writing as a member of the academic community.":
-                call L1wronganswershs3
+                jump L1wronganswershs3
             "C. It is used to avoid redundancy.":
-                call L1wronganswershs3
+                jump L1wronganswershs3
             "D. It is based on research and not on the writer’s own opinion about a given topic.":
-                call L1correctanswershs3
+                jump L1correctanswershs3
 
     return
 
@@ -2157,13 +2157,13 @@ label start:
         menu:
 
             "A. Structure":
-                call L1correctanswershs4
+                jump L1correctanswershs4
             "B. Formality":
-                call L1wronganswershs4
+                jump L1wronganswershs4
             "C. Objectivity":
-                call L1wronganswershs4
+                jump L1wronganswershs4
             "D. Explicitiness":
-                call L1wronganswershs4
+                jump L1wronganswershs4
 
     return
 
@@ -2215,13 +2215,13 @@ label start:
         menu:
 
             "A. Structure":
-                call L1wronganswershs5
+                jump L1wronganswershs5
             "B. Formality":
-                call L1correctanswershs5
+                jump L1correctanswershs5
             "C. Objectivity":
-                call L1wronganswershs5
+                jump L1wronganswershs5
             "D. Explicitness":
-                call L1wronganswershs5
+                jump L1wronganswershs5
 
     return
 
@@ -2275,13 +2275,13 @@ label start:
         menu:
 
             "A. Structure":
-                call L1wronganswershs6
+                jump L1wronganswershs6
             "B. Formality":
-                call L1wronganswershs6
+                jump L1wronganswershs6
             "C. Objectivity":
-                call L1correctanswershs6
+                jump L1correctanswershs6
             "D. Explicitness":
-                call L1wronganswershs6
+                jump L1wronganswershs6
 
     return
 
@@ -2334,13 +2334,13 @@ label start:
         menu:
 
             "A. Structure":
-                call L1wronganswershs7
+                jump L1wronganswershs7
             "B. Formality":
-                call L1wronganswershs7
+                jump L1wronganswershs7
             "C. Objectivity":
-                call L1wronganswershs7
+                jump L1wronganswershs7
             "D. Explicitness":
-                call L1correctanswershs7
+                jump L1correctanswershs7
 
     return
 
@@ -2380,8 +2380,7 @@ label start:
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
         $ timer_jump = 'question8shs_slow'                    ### set where you want to jump once the timer runs out
 
-        Question8SHS "When you’re writing a reaction about what
-        you have seen or experienced, that would be classified as _____________________"
+        Question8SHS "To avoid sweeping generalization."
         jump q8shs
     return
 
@@ -2392,21 +2391,21 @@ label start:
 
         menu:
 
-            "A. Tissue Paper":
-                call a8shs
-            "B. Review Paper":
-                call b8shs
-            "C. Reaction paper":
-                call c8shs
-            "D. I have no idea.":
-                call d8shs
+            "A. Caution":
+                jump L1correctanswershs8
+            "B. Cactus":
+                jump L1wronganswershs8
+            "C. Caught":
+                jump L1wronganswershs8
+            "D. Call":
+                jump L1wronganswershs8
 
     return
 
-    label a8shs:
+    label L1wronganswershs8:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}.
+        "Your answer is incorrect. The correct answer is {b}A. Caution{/b}.
         You may now proceed to Question no. 9."
         $ scoreL1SHS +=0
         stop sound
@@ -2414,18 +2413,7 @@ label start:
         jump Question9SHS
     return
 
-    label b8shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}.
-        You may now proceed to Question no. 9."
-        $ scoreL1SHS +=0
-        stop sound
-        stop music
-        jump Question9SHS
-    return
-
-    label c8shs:
+    label L1correctanswershs8:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 9."
@@ -2435,20 +2423,9 @@ label start:
         jump Question9SHS
     return
 
-    label d8shs:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}.
-        You may now proceed to Question no. 9."
-        $ scoreL1SHS +=0
-        stop sound
-        stop music
-        jump Question9SHS
-    return
-
     label question8shs_slow:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}C. Reaction paper{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Caution{/b}.
         You may now proceed to Question no. 9."
         $ scoreL1SHS +=0
         stop sound
@@ -2475,13 +2452,13 @@ label start:
         menu:
 
             "A. Formal Writing":
-                call L1wronganswershs9
+                jump L1wronganswershs9
             "B. Academic Writing":
-                call L1wronganswershs9
+                jump L1wronganswershs9
             "C. Academic Language":
-                call L1correctanswershs9
+                jump L1correctanswershs9
             "D. Structure":
-                call L1wronganswershs9
+                jump L1wronganswershs9
 
     return
 
@@ -2536,13 +2513,13 @@ label start:
         menu:
 
             "A. Nominalization":
-                call L1wronganswershs10
+                jump L1wronganswershs10
             "B. Passivization":
-                call L1correctanswershs10
+                jump L1correctanswershs10
             "C. Explicitiness":
-                call L1wronganswershs10
+                jump L1wronganswershs10
             "D. Objectivity":
-                call L1wronganswershs10
+                jump L1wronganswershs10
 
     return
 
@@ -2583,14 +2560,823 @@ label start:
     label ResultsSHS:
         show classroomshs
 
-        "Congratulations, player. Out of {b}10{/b} questions, {b}[playername]{/b} answered {b}[score]{/b} questions.
-        Thanks to you."
+        if scoreL1SHS == 0:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(0 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL1SHS == 1:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(10 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL1SHS == 2:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(20 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL1SHS == 3:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(30 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL1SHS == 4:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(40 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL1SHS == 5:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (50 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL1SHS == 6:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (60 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL1SHS == 7:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (70 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL1SHS == 8:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (80 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL1SHS == 9:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (90 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+
+        if scoreL1SHS == 10:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (100 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+
+    return
+
+
+    label quizdaySHS3:
+        $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
+
+        show classroomshs
+
+        show TeacherMarites
+
+        teachermarites "Good morning, students. Today is your quiz day. Once I gave the quiz sheets to all of you,
+        you may now start answering the questions provided. Do your best and good luck."
+
+        hide TeacherMarites
+
+        "Teacher Marites gave the quiz sheets to the students."
+
+        "Okay, player. I will present to you the mechanics of this game so please read and follow the
+        mechanics of this game. Thank you."
 
         hide classroomshs
 
-        jump EndingSHS
+        show Mechanics1
+
+        window hide
+
+        pause
+
+        hide Mechanics1
+
+        show Mechanics2
+
+        window hide
+
+        pause
+
+        hide Mechanics2
+
+        show classroomshs
+
+        show TeacherMarites
+
+        teachermarites "Okay, you may now start answering."
+
+        hide TeacherMarites
+
+        "Since you are about to take the quiz, you won't hear any background music until the end of the quiz."
+
+        "That is because usually, when you take your in school, you have to take it quietly."
+
+        stop music
+
+        jump Question1SHSL3
+
+    label Question1SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question1shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question1SHS "Involves reading with a purpose in order to grasp definitions and
+        meanings,understand debates, and identify and interpret evidence."
+        jump q1shs3
+    return
+
+    label q1shs3:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Active reading":
+                jump L3correctanswershs1
+            "B. Inactive reading":
+                jump L3wronganswershs1
+            "C. Passive reading":
+                jump L3wronganswershs1
+            "D. Backread":
+                jump L3wronganswershs1
 
     return
+
+
+    label L3wronganswershs1:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Active reading{/b}. You may now proceed to Question no. 2."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question2SHSL3
+    return
+
+    label L3correctanswershs1:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 2."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question2SHSL3
+
+    return
+
+    label question1shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Active reading{/b}.
+        You may now proceed to Question no. 2."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question2SHSL3
+    return
+
+    label Question2SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question2shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question2SHS "Usually consists of just a page number in the page’s top-right corner."
+        jump q2shs3
+    return
+
+    label q2shs3:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Cover header":
+                jump L3wronganswershs2
+            "B. Page header":
+                jump L3correctanswershs2
+            "C. Back header":
+                jump L3wronganswershs2
+            "D. Title header":
+                jump L3wronganswershs2
+
+    return
+
+
+    label L3wronganswershs2:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}B. Page header{/b}. You may now proceed to Question no. 3."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question3SHSL3
+    return
+
+    label L3correctanswershs2:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 3."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question3SHSL3
+    return
+
+    label question2shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Page header{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question3SHSL3
+    return
+
+    label Question3SHSL3:
+            $ time = 10                                     ### set variable time to 3
+            $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+            $ timer_jump = 'question3shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+            Question3SHS "How many APA headings level are possible.?"
+            jump q3shs3
+    return
+
+    label q3shs3:
+
+            show screen countdown                          ### call and start the timer
+
+            menu:
+
+                "A. 2":
+                    jump L3wronganswershs3
+                "B. 3":
+                    jump L3wronganswershs3
+                "C. 4":
+                    jump L3wronganswershs3
+                "D. 5":
+                    jump L3correctanswershs3
+
+    return
+
+    label L3wronganswershs3:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}D. 5{/b}. You may now proceed to Question no. 4."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question4SHSL3
+    return
+
+    label L3correctanswershs3:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 4."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question4SHSL3
+    return
+
+    label question3shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}D. 5{/b}.
+        You may now proceed to Question no. 4."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question4SHSL3
+    return
+
+    label Question4SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question4shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question4SHS "Heading level 1 is used for main sections such as “_______” or “_______”."
+        jump q4shs3
+    return
+
+    label q4shs3:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Methods or Results":
+                jump L3correctanswershs4
+            "B. Critic or Results":
+                jump L3wronganswershs4
+            "C. Summary or Results":
+                jump L3wronganswershs4
+            "D. Title or Results":
+                jump L3wronganswershs4
+
+    return
+
+    label L3wronganswershs4:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Methods or Results{/b}. You may now proceed to Question no. 5."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question5SHSL3
+    return
+
+    label L3correctanswershs4:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 5."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question5SHSL3
+    return
+
+    label question4shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Methods or Results{/b}.
+        You may now proceed to Question no. 5."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question5SHSL3
+    return
+
+    label Question5SHSL3:
+            $ time = 10                                     ### set variable time to 3
+            $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+            $ timer_jump = 'question5shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+            Question5SHS "Heading levels 2 to 5 are used for __________."
+            jump q5shs3
+    return
+
+    label q5shs3:
+        show screen countdown                          ### call and start the timer
+
+        menu:
+            "A. Subtitle":
+                jump L3wronganswershs5
+            "B. Substitution":
+                jump L3wronganswershs5
+            "C. Subheading":
+                jump L3correctanswershs5
+            "D. Heading":
+                jump L3wronganswershs5
+
+    return
+
+
+    label L3wronganswershs5:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}C. Subheading{/b}. You may now proceed to Question no. 6."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question6SHSL3
+    return
+
+    label L3correctanswershs5:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 6."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question6SHSL3
+
+    return
+
+    label question5shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Subheading{/b}.
+        You may now proceed to Question no. 6."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question6SHSL3
+    return
+
+    label Question6SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question6shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question6SHS "This is the first page of an APA Style paper. There are different guidelines for student and professional papers.
+        Both versions include the paper title and author’s name and affiliation."
+        jump q6shs3
+    return
+
+    label q6shs3:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Title page":
+                jump L3correctanswershs6
+            "B. First page":
+                jump L3wronganswershs6
+            "C. Top page":
+                jump L3wronganswershs6
+            "D. Front page":
+                jump L3wronganswershs6
+
+    return
+
+
+    label L3wronganswershs6:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Title page{/b}. You may now proceed to Question no. 7."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question7SHS
+    return
+
+    label L3correctanswershs6:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 7."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question7SHS
+
+    return
+
+    label question6shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Title page{/b}.
+        You may now proceed to Question no. 7."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question7SHS
+    return
+
+    label Question7SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question7shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question7SHS "a 150–250 word summary of your paper,
+        usually required in professional papers, but it’s rare to include one in student papers."
+        jump q7shs3
+    return
+
+    label q7shs3:
+
+            show screen countdown                          ### call and start the timer
+
+            menu:
+
+                "A. Construct":
+                    jump L3wronganswershs7
+                "B. Abstract":
+                    jump L3correctanswershs7
+                "C. Title Page":
+                    jump L3wronganswershs7
+                "D. Active reading":
+                    jump L3wronganswershs7
+
+    return
+
+    label L3wronganswershs7:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}B. Abstract{/b}. You may now proceed to Question no. 8."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question8SHSL3
+    return
+
+    label L3correctanswershs7:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 8."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question8SHSL3
+    return
+
+    label question7shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Abstract{/b}.
+        You may now proceed to Question no. 8."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question8SHSL3
+    return
+
+    label Question8SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question8shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question8SHS "APA Style does not provide guidelines for formatting the ____________
+        It’s also not a required paper element in either professional or student papers."
+        jump q8shs3
+    return
+
+    label q8shs3:
+        show screen countdown                          ### call and start the timer
+
+        menu:
+            "A. Title page":
+                jump L3wronganswershs8
+            "B. Abstract":
+                jump L3wronganswershs8
+            "C. Table of contents":
+                jump L3correctanswershs8
+            "D. Cover page":
+                jump L3wronganswershs8
+
+    return
+
+    label L3wronganswershs8:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}C. Table of contents{/b}.
+        You may now proceed to Question no. 9."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question9SHSL3
+    return
+
+    label L3correctanswershs8:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 9."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question9SHSL3
+    return
+
+    label question8shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Table of contents{/b}.
+        You may now proceed to Question no. 9."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question9SHSL3
+    return
+
+
+    label Question9SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question9shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question9SHS "When you’re writing a reaction about what
+        you have seen or experienced, that would be classified as _____________________"
+        jump q9shs3
+    return
+
+    label q9shs3:
+        show screen countdown                          ### call and start the timer
+
+        menu:
+            "A. Tissue Paper":
+                call L3wronganswershs9
+            "B. Review Paper":
+                call L3wronganswershs9
+            "C. Reaction paper":
+                call L3correctanswershs9
+            "D. I have no idea":
+                call L3wronganswershs9
+
+    return
+
+
+    label L3wronganswershs9:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}C. Reaction paper{/b}. You may now proceed to Question no. 10."
+        $ scoreL3SHS +=0
+        stop sound
+        stop music
+        jump Question10SHSL3
+    return
+
+    label L3correctanswershs9:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 10."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump Question10SHSL3
+
+    return
+
+    label L3question9shs_slow3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Reaction paper{/b}.
+        You may now proceed to Question no. 9."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump Question10SHSL3
+    return
+
+    label Question10SHSL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question10shs_slow3'                    ### set where you want to jump once the timer runs out
+
+
+        Question10SHS "When you’re writing a reaction about what
+        you have seen or experienced, that would be classified as _____________________"
+        jump q10shs
+    return
+
+    label q10shs3:
+        show screen countdown                          ### call and start the timer
+
+        menu:
+            "A. Scratch Paper":
+                jump L3wronganswershs10
+            "B. Bond Paper":
+                jump L3wronganswershs10
+            "C. Review Paper":
+                jump L3correctanswershs10
+            "D. One whole sheet of paper":
+                jump L3wronganswershs10
+
+    return
+
+    label L3wronganswershs10:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}C. Review Paper{/b}. And this is the end of the quiz, let us
+        now see the results."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump ResultsSHS3
+    return
+
+    label correctanswershs10:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! And this is the end of the quiz, let us
+        now see the results."
+        $ scoreL3SHS +=1
+        stop sound
+        stop music
+        jump ResultsSHS3
+    return
+
+    label question10shs_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Review Paper{/b}.
+        You may now proceed to Question no. 10."
+        $ scoreL1SHS +=0
+        stop sound
+        stop music
+        jump ResultsSHS3
+    return
+
+    label ResultsSHS3:
+        show classroomshs
+
+        if scoreL3SHS == 0:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(0 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L3SHS
+
+        if scoreL3SHS == 1:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(10 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L3SHS
+
+        if scoreL3SHS == 2:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(20 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L3SHS
+
+        if scoreL3SHS == 3:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(30 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL3SHS == 4:
+            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(40 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1SHS
+
+        if scoreL3SHS == 5:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (50 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL3SHS == 6:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (60 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL3SHS == 7:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (70 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL3SHS == 8:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (80 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+        if scoreL3SHS == 9:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (90 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
+
+        if scoreL3SHS == 10:
+            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (100 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingSHS
+
 
 
     label EndingSHS:
