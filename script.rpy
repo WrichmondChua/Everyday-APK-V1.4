@@ -7,7 +7,20 @@
 default scoreL1SHS= 0
 default scoreL2SHS= 0
 default scoreL3SHS= 0
+
+default scoreL1College = 0
+default scoreL2College = 0
+default scoreL3College = 0
+
 default scorepopquiz= 0
+
+default L1SHSProgress = 0
+default L2SHSProgress = 0
+default L3SHSProgress = 0
+
+default L1CollegeProgress = 0
+default L2CollegeProgress = 0
+default L3CollegeProgress = 0
 
 #shs and college pop quiz
 define Wrichmond= Character("Wrichmond", color= "#0040ff")
@@ -1581,6 +1594,8 @@ label start:
 
         hide Bedroom
 
+        show screen gameUISHS
+
         scene backgroundlesson
 
         show L1SHS
@@ -1591,6 +1606,7 @@ label start:
 
         hide L1SHS
 
+        $L1SHSProgress += 9
 
         show L1SHS2
 
@@ -1600,6 +1616,7 @@ label start:
 
         hide L1SHS2
 
+        $L1SHSProgress += 9
 
         show L1SHS3
 
@@ -1609,6 +1626,7 @@ label start:
 
         hide L1SHS3
 
+        $L1SHSProgress += 9
 
         show L1SHS4
 
@@ -1618,6 +1636,7 @@ label start:
 
         hide L1SHS4
 
+        $L1SHSProgress += 9
 
         show L1SHS5
 
@@ -1627,6 +1646,7 @@ label start:
 
         hide L1SHS5
 
+        $L1SHSProgress += 9
 
         show L1SHS6
 
@@ -1636,6 +1656,7 @@ label start:
 
         hide L1SHS6
 
+        $L1SHSProgress += 9
 
         show L1SHS7
 
@@ -1645,6 +1666,7 @@ label start:
 
         hide L1SHS7
 
+        $L1SHSProgress += 9
 
         show L1SHS8
 
@@ -1654,6 +1676,7 @@ label start:
 
         hide L1SHS8
 
+        $L1SHSProgress += 9
 
         show L1SHS9
 
@@ -1663,6 +1686,7 @@ label start:
 
         hide L1SHS9
 
+        $L1SHSProgress += 9
 
         show L1SHS10
 
@@ -1672,6 +1696,7 @@ label start:
 
         hide L1SHS10
 
+        $L1SHSProgress += 19
 
         show L1SHS11
 
@@ -1684,6 +1709,8 @@ label start:
         stop music
 
         show black
+
+        hide screen gameUISHS
 
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
@@ -1699,6 +1726,8 @@ label start:
 
         hide Bedroom
 
+        show screen gameUISHS2
+
         show L2SHS
 
         window hide
@@ -1707,6 +1736,7 @@ label start:
 
         hide L2SHS
 
+        $L2SHSProgress += 10
 
         show L2SHS2
 
@@ -1716,6 +1746,7 @@ label start:
 
         hide L2SHS2
 
+        $L2SHSProgress += 10
 
         show L2SHS3
 
@@ -1725,6 +1756,7 @@ label start:
 
         hide L2SHS3
 
+        $L2SHSProgress += 10
 
         show L2SHS4
 
@@ -1734,6 +1766,7 @@ label start:
 
         hide L2SHS4
 
+        $L2SHSProgress += 10
 
         show L2SHS5
 
@@ -1743,6 +1776,7 @@ label start:
 
         hide L2SHS5
 
+        $L2SHSProgress += 10
 
         show L2SHS6
 
@@ -1752,6 +1786,7 @@ label start:
 
         hide L2SHS6
 
+        $L2SHSProgress += 10
 
         show L2SHS7
 
@@ -1761,6 +1796,7 @@ label start:
 
         hide L2SHS7
 
+        $L2SHSProgress += 10
 
         show L2SHS8
 
@@ -1770,6 +1806,8 @@ label start:
 
         hide L2SHS8
 
+        $L2SHSProgress += 10
+
         show L2SHS9
 
         window hide
@@ -1778,6 +1816,7 @@ label start:
 
         hide L2SHS9
 
+        $L2SHSProgress += 20
 
         show L2SHS10
 
@@ -1791,10 +1830,364 @@ label start:
 
         show black
 
+        hide screen gameUISHS2
+
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump quizdaySHS
+        jump quizdaySHS2
 
+    return
+
+
+    label quizdaySHS2:
+
+        $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
+
+        show classroomshs
+
+        show TeacherMarites
+
+        teachermarites "Good morning, students. Today is your quiz day. Once I gave the quiz sheets to all of you,
+        you may now start answering the questions provided. Do your best and good luck."
+
+        hide TeacherMarites
+
+        "Teacher Marites gave the quiz sheets to the students."
+
+        "Okay, player. I will present to you the mechanics of this game so please read and follow the
+        mechanics of this game. Thank you."
+
+        hide classroomshs
+
+        show Mechanics1
+
+        window hide
+
+        pause
+
+        hide Mechanics1
+
+        show Mechanics2
+
+        window hide
+
+        pause
+
+        hide Mechanics2
+
+        show classroomshs
+
+        show TeacherMarites
+
+        teachermarites "Okay, you may now start answering."
+
+        hide TeacherMarites
+
+        "Since you are about to take the quiz, you won't hear any background music until the end of the quiz."
+
+        "That is because usually, when you take your in school, you have to take it quietly."
+
+        stop music
+
+        jump Question1SHSL2
+
+    label Question1SHSL2:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question1shs_slowL2'                    ### set where you want to jump once the timer runs out
+
+
+        Question1SHS "In note-taking, it is one of the simplest and most common ways to take notes.
+        Points and keywords are written down in a hierarchical structure."
+        jump q1shs2
+    return
+
+    label q1shs2:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Charting":
+                jump L2wronganswershs1
+            "B. Outlining":
+                jump L2correctanswershs1
+            "C. Mapping":
+                jump L2wronganswershs1
+            "D. Plagiarism":
+                jump L2wronganswershs1
+
+    return
+
+
+    label L2wronganswershs1:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}B. Outlining{/b}. You may now proceed to Question no. 2."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question2SHSL2
+    return
+
+    label L2correctanswershs1:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 2."
+        $ scoreL2SHS +=1
+        stop sound
+        stop music
+        jump Question2SHSL2
+
+    return
+
+    label question1shs_slowL2:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Outlining{/b}.
+        You may now proceed to Question no. 2."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question2SHSL2
+    return
+
+    label Question2SHSL2:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question2shs_slowL2'                    ### set where you want to jump once the timer runs out
+
+
+        Question2SHS "For visual thinkers, it might help to take notes using a mind map, or simply “_______.”"
+        jump q2shs2
+    return
+
+    label q2shs2:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Charting":
+                jump L2wronganswershs2
+            "B. Outlining":
+                jump L2wronganswershs2
+            "C. Mapping":
+                jump L2correctanswershs2
+            "D. Plagiarism":
+                jump L2wronganswershs2
+
+    return
+
+
+    label L2wronganswershs2:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}C. Mapping{/b}. You may now proceed to Question no. 3."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question3SHSL2
+    return
+
+    label L2correctanswershs2:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 3."
+        $ scoreL2SHS +=1
+        stop sound
+        stop music
+        jump Question3SHSL2
+
+    return
+
+    label question2shs_slowL2:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Mapping{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question3SHSL2
+    return
+
+    label Question3SHSL2:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question3shs_slowL2'                    ### set where you want to jump once the timer runs out
+
+
+        Question3SHS "It is a particular type of note-taking that works best when multiple topics
+        are discussed simultaneously, as with comparisons, or when one topic is dissected into multiple parts."
+        jump q3shs2
+    return
+
+    label q3shs2:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Charting":
+                jump L2correctanswershs3
+            "B. Outlining":
+                jump L2wronganswershs3
+            "C. Mapping":
+                jump L2wronganswershs3
+            "D. Plagiarism":
+                jump L2wronganswershs3
+
+    return
+
+
+    label L2wronganswershs3:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Charting{/b}. You may now proceed to Question no. 4."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question4SHSL2
+    return
+
+    label L2correctanswershs3:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 4."
+        $ scoreL2SHS +=1
+        stop sound
+        stop music
+        jump Question4SHSL2
+
+    return
+
+    label question3shs_slowL2:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Charting{/b}.
+        You may now proceed to Question no. 4."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question4SHSL2
+    return
+
+
+    label Question4SHSL2:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question4shs_slowL2'                    ### set where you want to jump once the timer runs out
+
+
+        Question4SHS "Who popularized the Cornell Notes or Cornell Notes System?"
+        jump q4shs2
+    return
+
+    label q4shs2:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Walter Pauk":
+                jump L2correctanswershs4
+            "B. James Sunderland":
+                jump L2wronganswershs4
+            "C. Heather Mason":
+                jump L2wronganswershs4
+            "D. Harry Mason":
+                jump L2wronganswershs4
+
+    return
+
+
+    label L2wronganswershs4:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Walter Pauk{/b}. You may now proceed to Question no. 5."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question5SHSL2
+    return
+
+    label L2correctanswershs4:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 5."
+        $ scoreL2SHS +=1
+        stop sound
+        stop music
+        jump Question5SHSL2
+
+    return
+
+    label question4shs_slowL2:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Walter Pauk{/b}.
+        You may now proceed to Question no. 5."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question5SHSL2
+    return
+
+    #To be continued editing tomorrow.
+
+    label Question5SHSL2:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question5shs_slow2'                    ### set where you want to jump once the timer runs out
+
+
+        Question1SHS "What does SQ4R as a method of note-taking stands for?"
+        jump q5shs2
+    return
+
+    label q5shs2:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Survey, Quality, Realism, Recitation, Reliable, Review":
+                jump L2wronganswershs5
+            "B. Service, Quality, Read, Recital, Review, Respectful":
+                jump L2wronganswershs5
+            "C. Salmon, Queen, Rider, Rangers, Reload, Rendering":
+                jump L2correctanswershs5
+            "D. Survey, Questions, Read, Recite, Relate, Review":
+                jump L2wronganswershs5
+
+    return
+
+
+    label L2wronganswershs5:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}D. Survey, Questions, Read, Recite, Relate, Review{/b}. You may now proceed to Question no. 2."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question2SHSL2
+    return
+
+    label L1correctanswershs5:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 6."
+        $ scoreL2SHS +=1
+        stop sound
+        stop music
+        jump Question2SHSL2
+    return
+
+    label question5shs_slow2:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}D. Survey, Questions, Read, Recite, Relate, Review{/b}.
+        You may now proceed to Question no. 6."
+        $ scoreL2SHS +=0
+        stop sound
+        stop music
+        jump Question2SHS
     return
 
     label L3SHS:
@@ -1805,6 +2198,8 @@ label start:
 
         hide Bedroom
 
+        show screen gameUISHS3
+
         show L3SHS
 
         window hide
@@ -1813,6 +2208,7 @@ label start:
 
         hide L3SHS
 
+        $L3SHSProgress += 10
 
         show L3SHS2
 
@@ -1822,6 +2218,7 @@ label start:
 
         hide L3SHS2
 
+        $L3SHSProgress += 10
 
         show L3SHS3
 
@@ -1831,6 +2228,7 @@ label start:
 
         hide L3SHS3
 
+        $L3SHSProgress += 10
 
         show L3SHS4
 
@@ -1840,6 +2238,7 @@ label start:
 
         hide L3SHS4
 
+        $L3SHSProgress += 10
 
         show L3SHS5
 
@@ -1849,6 +2248,7 @@ label start:
 
         hide L3SHS5
 
+        $L3SHSProgress += 10
 
         show L3SHS6
 
@@ -1858,6 +2258,7 @@ label start:
 
         hide L3SHS6
 
+        $L3SHSProgress += 10
 
         show L3SHS7
 
@@ -1867,6 +2268,7 @@ label start:
 
         hide L3SHS7
 
+        $L3SHSProgress += 10
 
         show L3SHS8
 
@@ -1876,6 +2278,7 @@ label start:
 
         hide L3SHS8
 
+        $L3SHSProgress += 10
 
         show L3SHS9
 
@@ -1885,6 +2288,7 @@ label start:
 
         hide L3SHS9
 
+        $L3SHSProgress += 20
 
         show L3SHS10
 
@@ -1897,6 +2301,8 @@ label start:
         stop music
 
         show black
+
+        hide screen gameUISHS3
 
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
@@ -2654,6 +3060,7 @@ label start:
 
 
     label quizdaySHS3:
+
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
 
         show classroomshs
@@ -3275,7 +3682,7 @@ label start:
         jump ResultsSHS3
     return
 
-    label question10shs_slow:
+    label question10shs_slow3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Review Paper{/b}.
         You may now proceed to Question no. 10."
