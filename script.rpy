@@ -1596,7 +1596,7 @@ label start:
 
         show screen gameUISHS
 
-        scene backgroundlesson
+        $L1SHSProgress = 0
 
         show L1SHS
 
@@ -1728,6 +1728,8 @@ label start:
 
         show screen gameUISHS2
 
+        $L2SHSProgress = 0
+
         show L2SHS
 
         window hide
@@ -1847,6 +1849,8 @@ label start:
         hide Bedroom
 
         show screen gameUISHS3
+
+        $L3SHSProgress = 0
 
         show L3SHS
 
@@ -3175,36 +3179,36 @@ label start:
         jump Question8SHSL2
     return
 
-    label Question9SHSL2:
+    label Question8SHSL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question9shs_slow2'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question8shs_slow2'                    ### set where you want to jump once the timer runs out
 
 
-        Question9SHS "Now, actually read the text, section by section, keeping an eye out
+        Question8SHS "Now, actually read the text, section by section, keeping an eye out
         for the answers to your questions from the previous step."
-        jump q9shs2
+        jump q8shs2
     return
 
-    label q9shs2:
+    label q8shs2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
             "A. Survey ":
-                jump L2wronganswershs9
+                jump L2wronganswershs8
             "B. Question":
-                jump L2wronganswershs9
+                jump L2wronganswershs8
             "C. Read":
-                jump L2correctanswershs9
+                jump L2correctanswershs8
             "D. Relate":
-                jump L2wronganswershs9
+                jump L2wronganswershs8
 
     return
 
 
-    label L2wronganswershs9:
+    label L2wronganswershs8:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}C. Read{/b}. You may now proceed to Question no. 9."
@@ -3214,7 +3218,7 @@ label start:
         jump Question9SHSL2
     return
 
-    label L2correctanswershs9:
+    label L2correctanswershs8:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 9."
@@ -3225,14 +3229,14 @@ label start:
 
     return
 
-    label question9shs_slow2:
+    label question8shs_slow2:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Read{/b}.
         You may now proceed to Question no. 9."
         $ scoreL2SHS +=0
         stop sound
         stop music
-        jump Questio92SHS
+        jump Question9SHSL2
     return
 
     label Question9SHSL2:
@@ -3264,7 +3268,7 @@ label start:
     return
 
 
-    label L2wronganswershs10:
+    label L2wronganswershs9:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
         "Your answer is incorrect. The correct answer is {b}D. Recite{/b}. You may now proceed to Question no. 10."
@@ -3274,7 +3278,7 @@ label start:
         jump Question10SHSL2
     return
 
-    label L2correctanswershs10:
+    label L2correctanswershs9:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 10."
@@ -3359,7 +3363,7 @@ label start:
         show classroomshs
 
         if scoreL2SHS == 0:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(0 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL2SHS]{/b}(0 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -3367,7 +3371,7 @@ label start:
             jump L2SHS
 
         if scoreL2SHS == 1:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(10 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL2SHS]{/b}(10 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -3375,7 +3379,7 @@ label start:
             jump L2SHS
 
         if scoreL2SHS == 2:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(20 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL2SHS]{/b}(20 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -3383,7 +3387,7 @@ label start:
             jump L2SHS
 
         if scoreL2SHS == 3:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(30 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL2SHS]{/b}(30 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -3391,7 +3395,7 @@ label start:
             jump L2SHS
 
         if scoreL2SHS == 4:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(40 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL2SHS]{/b}(40 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -3399,7 +3403,7 @@ label start:
             jump L2SHS
 
         if scoreL2SHS == 5:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (50 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL2SHS]{/b} (50 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -3407,7 +3411,7 @@ label start:
             jump EndingSHS
 
         if scoreL2SHS == 6:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (60 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL2SHS]{/b} (60 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -3415,7 +3419,7 @@ label start:
             jump EndingSHS
 
         if scoreL2SHS == 7:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (70 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL2SHS]{/b} (70 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -3423,7 +3427,7 @@ label start:
             jump EndingSHS
 
         if scoreL2SHS == 8:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (80 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL2SHS]{/b} (80 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -3431,7 +3435,7 @@ label start:
             jump EndingSHS
 
         if scoreL2SHS == 9:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (90 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL2SHS]{/b} (90 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -3440,16 +3444,14 @@ label start:
 
 
         if scoreL2SHS == 10:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (100 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL2SHS]{/b} (100 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
 
             jump EndingSHS
 
-
     return
-
 
     label quizdaySHS3:
 
@@ -3506,7 +3508,7 @@ label start:
     label Question1SHSL3:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question1shs_slow3'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question1shs_slowL3'                    ### set where you want to jump once the timer runs out
 
 
         Question1SHS "Involves reading with a purpose in order to grasp definitions and
@@ -3553,7 +3555,7 @@ label start:
 
     return
 
-    label question1shs_slow3:
+    label question1shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}A. Active reading{/b}.
         You may now proceed to Question no. 2."
@@ -3566,7 +3568,7 @@ label start:
     label Question2SHSL3:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question2shs_slow3'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question2shs_slowL3'                    ### set where you want to jump once the timer runs out
 
 
         Question2SHS "Usually consists of just a page number in the page’s top-right corner."
@@ -3611,7 +3613,7 @@ label start:
         jump Question3SHSL3
     return
 
-    label question2shs_slow3:
+    label question2shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}B. Page header{/b}.
         You may now proceed to Question no. 3."
@@ -3668,7 +3670,7 @@ label start:
         jump Question4SHSL3
     return
 
-    label question3shs_slow3:
+    label question3shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}D. 5{/b}.
         You may now proceed to Question no. 4."
@@ -3725,7 +3727,7 @@ label start:
         jump Question5SHSL3
     return
 
-    label question4shs_slow3:
+    label question4shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}A. Methods or Results{/b}.
         You may now proceed to Question no. 5."
@@ -3782,7 +3784,7 @@ label start:
 
     return
 
-    label question5shs_slow3:
+    label question5shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Subheading{/b}.
         You may now proceed to Question no. 6."
@@ -3828,7 +3830,7 @@ label start:
         $ scoreL3SHS +=0
         stop sound
         stop music
-        jump Question7SHS
+        jump Question7SHSL3
     return
 
     label L3correctanswershs6:
@@ -3838,18 +3840,18 @@ label start:
         $ scoreL3SHS +=1
         stop sound
         stop music
-        jump Question7SHS
+        jump Question7SHSL3
 
     return
 
-    label question6shs_slow3:
+    label question6shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}A. Title page{/b}.
         You may now proceed to Question no. 7."
         $ scoreL1SHS +=0
         stop sound
         stop music
-        jump Question7SHS
+        jump Question7SHSL3
     return
 
     label Question7SHSL3:
@@ -3858,7 +3860,7 @@ label start:
         $ timer_jump = 'question7shs_slow3'                    ### set where you want to jump once the timer runs out
 
 
-        Question7SHS "a 150–250 word summary of your paper,
+        Question7SHS "A 150–250 word summary of your paper,
         usually required in professional papers, but it’s rare to include one in student papers."
         jump q7shs3
     return
@@ -3900,7 +3902,7 @@ label start:
         jump Question8SHSL3
     return
 
-    label question7shs_slow3:
+    label question7shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}B. Abstract{/b}.
         You may now proceed to Question no. 8."
@@ -3916,7 +3918,7 @@ label start:
         $ timer_jump = 'question8shs_slow3'                    ### set where you want to jump once the timer runs out
 
 
-        Question8SHS "APA Style does not provide guidelines for formatting the ____________
+        Question8SHS "APA Style does not provide guidelines for formatting the ____________.
         It’s also not a required paper element in either professional or student papers."
         jump q8shs3
     return
@@ -3957,7 +3959,7 @@ label start:
         jump Question9SHSL3
     return
 
-    label question8shs_slow3:
+    label question8shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Table of contents{/b}.
         You may now proceed to Question no. 9."
@@ -3975,7 +3977,7 @@ label start:
 
 
         Question9SHS "When you’re writing a reaction about what
-        you have seen or experienced, that would be classified as _____________________"
+        you have seen or experienced, that would be classified as _____________________."
         jump q9shs3
     return
 
@@ -4016,7 +4018,7 @@ label start:
 
     return
 
-    label L3question9shs_slow3:
+    label question9shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Reaction paper{/b}.
         You may now proceed to Question no. 9."
@@ -4034,7 +4036,7 @@ label start:
 
         Question10SHS "When you’re writing a reaction about what
         you have seen or experienced, that would be classified as _____________________"
-        jump q10shs
+        jump q10shs3
     return
 
     label q10shs3:
@@ -4063,7 +4065,7 @@ label start:
         jump ResultsSHS3
     return
 
-    label correctanswershs10:
+    label L3correctanswershs10:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! And this is the end of the quiz, let us
@@ -4074,7 +4076,7 @@ label start:
         jump ResultsSHS3
     return
 
-    label question10shs_slow3:
+    label question10shs_slowL3:
         play sound "audio/Time Distortion sfx.mp3"
         "Unfortunately, you ran out of time. The correct answer is {b}C. Review Paper{/b}.
         You may now proceed to Question no. 10."
@@ -4088,7 +4090,7 @@ label start:
         show classroomshs
 
         if scoreL3SHS == 0:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(0 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(0 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -4096,7 +4098,7 @@ label start:
             jump L3SHS
 
         if scoreL3SHS == 1:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(10 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(10 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -4104,7 +4106,7 @@ label start:
             jump L3SHS
 
         if scoreL3SHS == 2:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(20 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(20 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -4112,7 +4114,7 @@ label start:
             jump L3SHS
 
         if scoreL3SHS == 3:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(30 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(30 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -4120,7 +4122,7 @@ label start:
             jump L3SHS
 
         if scoreL3SHS == 4:
-            "Out of 10 questions, [playername] have answered {b}[scoreL1SHS]{/b}(40 percent) questions.
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(40 percent) questions.
             Unfortunately, you have failed this quiz. Please study the lesson again."
 
             hide classroomshs
@@ -4128,7 +4130,7 @@ label start:
             jump L3SHS
 
         if scoreL3SHS == 5:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (50 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (50 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -4136,7 +4138,7 @@ label start:
             jump EndingSHS
 
         if scoreL3SHS == 6:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (60 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (60 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -4144,7 +4146,7 @@ label start:
             jump EndingSHS
 
         if scoreL3SHS == 7:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (70 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (70 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -4152,7 +4154,7 @@ label start:
             jump EndingSHS
 
         if scoreL3SHS == 8:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (80 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (80 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -4160,7 +4162,7 @@ label start:
             jump EndingSHS
 
         if scoreL3SHS == 9:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (90 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (90 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -4169,7 +4171,7 @@ label start:
 
 
         if scoreL3SHS == 10:
-            "Out of 10 questions, [playername] answered {b}[scoreL1SHS]{/b} (100 percent)
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (100 percent)
             questions. Congratulations, [playername]. You passed in this quiz. Great job!"
 
             hide classroomshs
@@ -5001,9 +5003,7 @@ label start:
         to help [playername] to get the best score possible for tomorrow's quiz. The [playername]'s fate
         for tomorrow's quiz is in your hands now so you better learn the lessons right away, ok?"
 
-        menu:
-            "Yes, man. It's time for me to study!":
-                jump study2
+        jump study2
 
     return
 
@@ -5048,6 +5048,10 @@ label start:
 
         hide Bedroom
 
+        show screen gameUICollege
+
+        $L1CollegeProgress = 0
+
         show L1College
 
         window hide
@@ -5055,6 +5059,8 @@ label start:
         pause
 
         hide L1College
+
+        $L1CollegeProgress += 9
 
 
         show L1College2
@@ -5065,6 +5071,8 @@ label start:
 
         hide L1College2
 
+        $L1CollegeProgress += 9
+
 
         show L1College3
 
@@ -5073,6 +5081,8 @@ label start:
         pause
 
         hide L1College3
+
+        $L1CollegeProgress += 9
 
 
         show L1College4
@@ -5083,6 +5093,8 @@ label start:
 
         hide L1College4
 
+        $L1CollegeProgress += 9
+
 
         show L1College5
 
@@ -5091,6 +5103,8 @@ label start:
         pause
 
         hide L1College5
+
+        $L1CollegeProgress += 9
 
 
         show L1College6
@@ -5101,6 +5115,8 @@ label start:
 
         hide L1College6
 
+        $L1CollegeProgress += 9
+
 
         show L1College7
 
@@ -5109,6 +5125,8 @@ label start:
         pause
 
         hide L1College7
+
+        $L1CollegeProgress += 9
 
 
         show L1College8
@@ -5119,6 +5137,8 @@ label start:
 
         hide L1College8
 
+        $L1CollegeProgress += 9
+
 
         show L1College9
 
@@ -5128,6 +5148,8 @@ label start:
 
         hide L1College9
 
+        $L1CollegeProgress += 9
+
 
         show L1College10
 
@@ -5136,6 +5158,8 @@ label start:
         pause
 
         hide L1College10
+
+        $L1CollegeProgress += 19
 
 
         show L1College11
@@ -5150,11 +5174,749 @@ label start:
 
         show black
 
+        hide screen gameUICollege
+
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump quizdayCollege
+        jump quizdayCollege1
 
     return
+
+    label quizdayCollege1:
+
+        $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
+
+        show classroomshs
+
+        show TeacherMarites
+
+        teachermarites "Good morning, students. Today is your quiz day. Once I gave the quiz sheets to all of you,
+        you may now start answering the questions provided. Do your best and good luck."
+
+        hide TeacherMarites
+
+        "Teacher Marites gave the quiz sheets to the students."
+
+        "Okay, player. I will present to you the mechanics of this game so please read and follow the
+        mechanics of this game. Thank you."
+
+        hide classroomshs
+
+        show Mechanics1
+
+        window hide
+
+        pause
+
+        hide Mechanics1
+
+        show Mechanics2
+
+        window hide
+
+        pause
+
+        hide Mechanics2
+
+        show classroomshs
+
+        show TeacherMarites
+
+        teachermarites "Okay, you may now start answering."
+
+        hide TeacherMarites
+
+        "Since you are about to take the quiz, you won't hear any background music until the end of the quiz."
+
+        "That is because usually, when you take your in school, you have to take it quietly."
+
+        stop music
+
+        jump Question1CollegeL1
+
+    label Question1CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question1college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question1College "What are the 5 parts of a concept paper? "
+        jump q1college
+    return
+
+    label q1college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Earth, Fire, Water, Air, and Lightning":
+                jump L1wronganswerCollege1
+            "B. Apple, Lemon, Grapes, and Orange":
+                jump L1wronganswerCollege1
+            "C. Project Vision, Project Scope, Project Targets, Timeline and Milestones and Project Management":
+                jump L1correctanswerCollege1
+            "D. The sender, the receiver, the message, the channel and feedback":
+                jump L3wronganswerCollege1
+
+    return
+
+    label L1wronganswerCollege1:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}C. Project Vision, Project Scope, Project Targets,
+        Timeline and Milestones and Project Management{/b}. You may now proceed to Question no. 2."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question2CollegeL1
+    return
+
+    label L1correctanswerCollege1:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 2."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question2CollegeL1
+
+    return
+
+    label question1college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Project Vision, Project Scope, Project Targets,
+        Timeline and Milestones and Project Management{/b}. You may now proceed to Question no. 2."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question2CollegeL1
+    return
+
+    label Question2CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question2college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question2College "Project scope is not part of concept paper."
+        jump q2college
+    return
+
+    label q2college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. True":
+                jump L1wronganswerCollege2
+            "B. False":
+                jump L1correctanswerCollege2
+            "C. Maybe":
+                jump L1wronganswerCollege2
+            "D. None of the Above":
+                jump L1wronganswerCollege2
+
+    return
+
+
+    label L1wronganswerCollege2:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}B. False{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question3CollegeL1
+    return
+
+    label L1correctanswerCollege2:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 3."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question3CollegeL1
+
+    return
+
+    label question2college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}B. False{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question2CollegeL1
+    return
+
+    label Question3CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question3college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question3College "It is the secondhand information obtained from reading books, watching news, videos,
+        the internet, and other already documented material."
+        jump q3college
+    return
+
+    label q3college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. First data":
+                jump L1wronganswerCollege3
+            "B. Secondary data":
+                jump L1correctanswerCollege3
+            "C. Third Data":
+                jump L1wronganswerCollege3
+            "D. Fourth Data":
+                jump L1wronganswerCollege3
+
+    return
+
+
+    label L1wronganswerCollege3:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}B. Secondary Data{/b}.
+        You may now proceed to Question no. 4."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question4CollegeL1
+    return
+
+    label L1correctanswerCollege3:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 4."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question4CollegeL1
+    return
+
+    label question3college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}B. False{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question4CollegeL1
+    return
+
+    label Question4CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question4college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question4College "Timeline and milestones is part of Concept paper."
+        jump q4college
+    return
+
+    label q4college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. True":
+                jump L1correctanswerCollege4
+            "B. False":
+                jump L1wronganswerCollege4
+            "C. Maybe":
+                jump L1wronganswerCollege4
+            "D. None of the Above":
+                jump L1wronganswerCollege4
+
+    return
+
+    label L1wronganswerCollege4:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. True{/b}.
+        You may now proceed to Question no. 4."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question4CollegeL1
+    return
+
+    label L1correctanswerCollege4:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 4."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question4CollegeL1
+
+    return
+
+    label question4college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. True{/b}.
+        You may now proceed to Question no. 4."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question4CollegeL1
+    return
+
+    label Question5CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question5college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question5College "Which of the following are the characteristics of a good concept paper?"
+        jump q5college
+    return
+
+    label q5college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Agreeableness, and Neuroticism":
+                jump L1wronganswerCollege5
+            "B. Beliefs":
+                jump L1wronganswerCollege5
+            "C. Cooperation":
+                jump L1wronganswerCollege5
+            "D. A clear description of the topic":
+                jump L1correctanswerCollege5
+
+    return
+
+    label L1wronganswerCollege5:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}D. A clear description of the topic{/b}.
+        You may now proceed to Question no. 6."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question6CollegeL1
+    return
+
+    label L1correctanswerCollege5:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 6."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question6CollegeL1
+    return
+
+    label question5college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}D. A clear description of the topic{/b}.
+        You may now proceed to Question no. 6."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question6CollegeL1
+    return
+
+    label Question6CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question6college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question6College "Timeline and milestones is part of the 5 parts of a concept paper?"
+        jump q6college
+    return
+
+    label q6college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. True":
+                jump L1correctanswerCollege6
+            "B. False":
+                jump L1wronganswerCollege6
+            "C. Maybe":
+                jump L1wronganswerCollege6
+            "D. None of the Above":
+                jump L1wronganswerCollege6
+
+    return
+
+    label L1wronganswerCollege6:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. True{/b}.
+        You may now proceed to Question no. 7."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question7CollegeL1
+    return
+
+    label L1correctanswerCollege6:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 7."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question7CollegeL1
+    return
+
+    label question6college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. True{/b}.
+        You may now proceed to Question no. 7."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question7CollegeL1
+    return
+
+    label Question7CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question7college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question7College "The part of the Concept Paper that covers
+        personnel allocation and synchronizes efforts across different functions."
+        jump q7college
+    return
+
+    label q7college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Project Management":
+                jump L1correctanswerCollege7
+            "B. Time Scale Projects":
+                jump L1wronganswerCollege7
+            "C. Research Projects":
+                jump L1wronganswerCollege7
+            "D. Project Proposal":
+                jump L1wronganswerCollege7
+
+    return
+
+    label L1wronganswerCollege7:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Project Management{/b}.
+        You may now proceed to Question no. 8."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question8CollegeL1
+    return
+
+    label L1correctanswerCollege7:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 8."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question8CollegeL1
+    return
+
+    label question7college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Project Management{/b}.
+        You may now proceed to Question no. 8."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question8CollegeL1
+    return
+
+    ##later
+
+    label Question8CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question8college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question8College "The Concept Paper should next define the __________, the specific flow of activities involved,
+        the organizational boundaries as well as the end-to-end processes."
+        jump q8college
+    return
+
+    label q8college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Concept Scope":
+                jump L1wronganswerCollege8
+            "B. Reaction Scope":
+                jump L1wronganswerCollege8
+            "C. Review Scope":
+                jump L1wronganswerCollege8
+            "D. Project scope":
+                jump L1correctanswerCollege8
+
+    return
+
+    label L1wronganswerCollege8:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}D. Project Scope{/b}.
+        You may now proceed to Question no. 9."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question9CollegeL1
+    return
+
+    label L1correctanswerCollege8:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 9."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question9CollegeL1
+    return
+
+    label question8college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}D. Project Scope{/b}.
+        You may now proceed to Question no. 9."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question9CollegeL1
+    return
+
+    label Question9CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question9college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question9College "What is the most important part of a concept paper?"
+        jump q9college
+    return
+
+    label q9college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Supporting Documentation":
+                jump L1correctanswerCollege9
+            "B. Time Scale Projects":
+                jump L1wronganswerCollege9
+            "C. Research Projects":
+                jump L1wronganswerCollege9
+            "D. Project Proposal":
+                jump L1wronganswerCollege9
+
+    return
+
+    label L1wronganswerCollege9:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Supporting Documentation{/b}.
+        You may now proceed to Question no. 10."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question9CollegeL1
+    return
+
+    label L1correctanswerCollege9:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 10."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump Question9CollegeL1
+    return
+
+    label question9college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Supporting Documentation{/b}.
+        You may now proceed to Question no. 10."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump Question9CollegeL1
+    return
+
+    label Question10CollegeL1:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question10college_slow'                    ### set where you want to jump once the timer runs out
+
+
+        Question9College "A brief paper that outlines the important
+        components of a research or project before it is carried out."
+        jump q10college
+    return
+
+    label q10college:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+            "A. Concept paper":
+                jump L1correctanswerCollege10
+            "B. Position Paper ":
+                jump L1wronganswerCollege10
+            "C. Review Paper":
+                jump L1wronganswerCollege10
+            "D. None of the Above":
+                jump L1wronganswerCollege10
+
+    return
+
+    label L1wronganswerCollege10:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Concept Paper{/b}.
+         And this is the end of the quiz, let us now see the results."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump ResultsCollege
+    return
+
+    label L1correctanswerCollege10:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 10.
+        And this is the end of the quiz, let us now see the results."
+        $ scoreL1College +=1
+        stop sound
+        stop music
+        jump ResultsCollege
+    return
+
+    label question10college_slow:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Concept Paper{/b}.
+        And this is the end of the quiz, let us now see the results."
+        $ scoreL1College +=0
+        stop sound
+        stop music
+        jump ResultsCollege
+    return
+
+    label ResultsCollege:
+        show classroomshs
+
+        if scoreL1College == 0:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(0 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1College
+
+        if scoreL1College == 1:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(10 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1College
+
+        if scoreL1College == 2:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(20 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1College
+
+        if scoreL1College == 3:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(30 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1College
+
+        if scoreL1College == 4:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(40 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L1College
+
+        if scoreL1CollegeS == 5:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (50 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL1College == 6:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (60 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL1College == 7:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (70 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL1College == 8:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (80 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL1College == 9:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (90 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+
+        if scoreL1College == 10:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (100 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
 
     label L2College:
         stop music
@@ -5163,6 +5925,10 @@ label start:
 
         hide Bedroom
 
+        show screen gameUICollege2
+
+        $L2CollegeProgress = 0
+
         show L2College
 
         window hide
@@ -5170,6 +5936,8 @@ label start:
         pause
 
         hide L2College2
+
+        $L2CollegeProgress += 20
 
 
         show L2College2
@@ -5180,6 +5948,8 @@ label start:
 
         hide L2College2
 
+        $L2CollegeProgress += 20
+
 
         show L2College3
 
@@ -5188,6 +5958,8 @@ label start:
         pause
 
         hide L2College3
+
+        $L2CollegeProgress += 60
 
 
         show L2College4
@@ -5198,70 +5970,22 @@ label start:
 
         hide L2College4
 
-        stop music
-
-        show black
-
-        "You have finally finished reading the lesson. You will now proceed to the quiz part."
-
-        jump quizdayCollege
-
-
-    return
-
-    label L3College:
-        stop music
-
-        $renpy.music.play("audio/DLJ - Deep Sleep ft. TABAL.mp3", loop=True)
-
-        hide Bedroom
-
-        show L3College
-
-        window hide
-
-        pause
-
-        hide L3College
-
-
-        show L3College2
-
-        window hide
-
-        pause
-
-        hide L3College2
-
-
-        show L3College3
-
-        window hide
-
-        pause
-
-        hide L3College3
-
-
-        show L3College4
-
-        window hide
-
-        pause
-
-        hide L3College4
+        $L2CollegeProgress
 
         stop music
 
         show black
 
+        hide screen gameUICollege2
+
         "You have finally finished reading the lesson. You will now proceed to the quiz part."
 
-        jump quizdayCollege
+        jump quizdayCollege2
+
 
     return
 
-    label quizdayCollege:
+    label quizdayCollege2:
 
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
 
@@ -5311,842 +6035,1035 @@ label start:
 
         stop music
 
-        jump Question1College
+    jump Question1CollegeL2
 
     return
 
-    label Question1College:
+    label Question1CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question1college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question1college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question1College "It is a preliminary document that sets out to explain what
-        a proposed study is about, why it is being undertaken, and how it will be carried out."
-        jump q1college
+        Question1College "A good _________  will not only provide facts but also make proposals for resolutions."
+        jump q1collegeL2
     return
 
-    label q1college:
+    label q1collegeL2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
             "A. Concept Paper":
-                jump a1college
-            "B. Academic Research":
-                jump b1college
+                jump L2wronganswercollege1
+            "B. Position Paper":
+                jump L2correctanswercollege1
             "C. Reaction Paper":
-                jump c1college
-            "D. Reflection Paper":
-                jump d1college
+                jump L2wronganswercollege1
+            "D. None of the above":
+                jump L2wronganswercollege1
 
     return
 
-    label a1college:
+    label L2correctanswercollege1:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 2."
-        $ score +=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question2College
+        jump Question2CollegeL2
     return
 
-    label b1college:
+    label L2wronganswercollege1:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Concept Paper{/b}. You may now proceed to Question no. 2."
-        $ score +=0
+        "Your answer is incorrect. The correct answer is {b}B. Position Paper{/b}. You may now proceed to Question no. 2."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question2College
+        jump Question2CollegeL2
     return
 
-    label c1college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Concept Paper{/b}. You may now proceed to Question no. 2."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question2College
-    return
-
-    label d1college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Concept Paper{/b}. You may now proceed to Question no. 2."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question2College
-    return
-
-    label question1college_slow:
+    label question1college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}A. Concept Paper{/b}. You may now proceed to Question no. 2."
-        $ score +=0
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Position Paper{/b}. You may now proceed to Question no. 2."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question2College
+        jump Question2CollegeL2
     return
 
-
-    label Question2College:
+    label Question2CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question2college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question2college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question2College "What are the 5 elements of a Concept Paper?"
-        jump q2college
+        Question2College "What are the three main elements of a position paper?."
+        jump q2college2
     return
 
-    label q2college:
+    label q2college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Project, Project Zero, Timeline, Paper, and Milestones":
-                jump a2college
-            "B. Project Vision, Project Scope, Project Targets, Timeline, and Milestones":
-                jump b2college
-            "C. Concept, Plot, Climax, Resolution, Falling Action":
-                jump c2college
-            "D. Project D, Project Zero, Timeline, Milestones, and Concept Paper":
-                jump d2college
+            "A. Knowledge and Skills about the field, Communication and Relationship Skills":
+                jump L2wronganswercollege2
+            "B. Quality of Instruction, Beliefs, and Professional behaviors":
+                jump L2wronganswercollege2
+            "C. Introduction, Body, and  Conclusion ":
+                jump L2correctanswercollege2
+            "D. None of the above":
+                jump L2wronganswercollege2
 
     return
 
-    label a2college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Project Vision, Project Scope, Project Targets,
-        Timeline, and Milestones.{/b} You may now proceed to Question no. 3."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question3College
-    return
-    return
-
-    label b2college:
+    label L2correctanswercollege2:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
-        "Your answer is correct! You may now proceed to Question no. 3."
-        $ score +=1
+        "Your answer is correct! You may now proceed to Question no. 2."
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question3College
+        jump Question3CollegeL2
     return
 
-    label c2college:
+    label L2wronganswercollege2:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Project Vision, Project Scope, Project Targets,
-        Timeline, and Milestones.{/b} You may now proceed to Question no. 3."
-        $ score +=0
+        "Your answer is incorrect. The correct answer is {b}C. Introduction, Body, and Conclusion{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question3College
+        jump Question3CollegeL2
     return
 
-    label d2college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is{b}B. Project Vision, Project Scope, Project Targets,
-        Timeline, and Milestones.{/b} You may now proceed to Question no. 3."
-        $ score +=0
-        stop sound
-        stop music
-        jump Question3College
-    return
-
-    label question2college_slow:
+    label question2college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}B. Project Vision, Project Scope, Project Targets,
-        Timeline, and Milestones.{/b} You may now proceed to Question no. 3."
-        $ score +=0
+        "Unfortunately, you ran out of time. The correct answer is The correct answer is {b}C. Introduction, Body,
+        and Conclusion{/b}. You may now proceed to Question no. 3."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question3College
+        jump Question3CollegeL2
     return
 
-
-    label Question3College:
+    label Question3CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question3college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question3college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question3College "What are the 3 main elements of Position Paper?"
-        jump q3college
+        Question3College "The part of the position paper that introduce your topic and end with your thesis statement."
+        jump q3college2
     return
 
-
-    label q3college:
+    label q3college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Ifrit, Bahamut, Chocobo":
-                jump a3college
-            "B. International, Bravo, Conclusion":
-                jump b3college
-            "C. Introduction, Body, Constitution":
-                jump c3college
-            "D. Introduction, Body, Conclusion":
-                jump d3college
+            "A. Introduction ":
+                jump L2correctanswercollege3
+            "B. Conclusion":
+                jump L2wronganswercollege3
+            "C. The body of the paper":
+                jump L2wronganswercollege3
+            "D. None of the above":
+                jump L2wronganswercollege3
 
     return
 
-    label a3college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Introduction, Body, Conclusion{/b}.
-        You may now proceed to Question no. 4."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question4College
-    return
-    return
-
-    label b3college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Introduction, Body, Conclusion{/b}.
-        You may now proceed to Question no. 4."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question4College
-    return
-
-    label c3college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}D. Introduction, Body, Conclusion{/b}.
-        You may now proceed to Question no. 4."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question4College
-    return
-
-    label d3college:
+    label L2correctanswercollege3:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 4."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question4College
+        jump Question4CollegeL2
     return
 
-    label question3college_slow:
+    label L2wronganswercollege3:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Introduction{/b}. You may now proceed to Question no. 4."
+        $ scoreL2College +=0
+        stop sound
+        stop music
+        jump Question4CollegeL2
+    return
+
+    label question3college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}D. Introduction, Body, Conclusion{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Introduction{/b}.
         You may now proceed to Question no. 4."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question4College
+        jump Question4CollegeL2
     return
 
-
-    label Question4College:
+    label Question4CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question4college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question4college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question4College "It is a special event that represents a point
-        in time that marks the expected completion of certain activities and tasks. "
-        jump q4college
+        Question4College "Identifies the issue that will be discussed and states the author's position on the issue introduction.
+        a proposed study is about, why it is being undertaken, and how it will be carried out."
+        jump q4college2
     return
 
-
-    label q4college:
+    label q4college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Milestones":
-                jump a4college
-            "B. Project Milestone":
-                jump b4college
-            "C. Timeline":
-                jump c4college
-            "D. Position Paper":
-                jump d4college
+            "A. Conclusions":
+                jump L2wronganswercollege4
+            "B. Introduction ":
+                jump L2correctanswercollege4
+            "C. The body of the paper":
+                jump L2wronganswercollege4
+            "D. None of the above":
+                jump L2wronganswercollege4
 
     return
 
-    label a4college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Project Milestone{/b}.
-        You may now proceed to Question no. 5."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question5College
-    return
-    return
-
-    label b4college:
+    label L2correctanswercollege4:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 5."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question5College
+        jump Question5CollegeL2
     return
 
-    label c4college:
+    label L2wronganswercollege4:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Project Milestone{/b}.
-        You may now proceed to Question no. 5."
-        $ score+=0
+        "Your answer is incorrect. The correct answer is {b}B. Introduction {/b}. You may now proceed to Question no. 5."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question5College
+        jump Question5CollegeL2
     return
 
-    label d4college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Project Milestone{/b}.
-        You may now proceed to Question no. 5."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question5College
-    return
-
-    label question4college_slow:
+    label question4college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}B. Project Milestone{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Introduction {/b}.
         You may now proceed to Question no. 5."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question5College
+        jump Question5CollegeL2
     return
 
-
-    label Question5College:
+    label Question5CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question5college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question5college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question5College "It makes progress visible, expose problems and
-        represent the conclusion of a learning cycle."
-        jump q5college
+        Question5College "A _______, restating the key points and, where applicable, suggesting resolutions to the issue.
+        a proposed study is about, why it is being undertaken, and how it will be carried out."
+        jump q5college2
     return
 
-
-    label q5college:
+    label q5college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Milestones":
-                jump a5college
-            "B. Project Milestone":
-                jump b5college
-            "C. Timeline":
-                jump c5college
-            "D. Position Paper":
-                jump d5college
+            "A. Introduction":
+                jump L2wronganswercollege5
+            "B. The body of the paper":
+                jump L2wronganswercollege5
+            "C. Conclusion":
+                jump L2correctanswercollege5
+            "D. None of the above":
+                jump L2wronganswercollege5
 
     return
 
-    label a5college:
+    label L2correctanswercollege5:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 6."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question6College
+        jump Question6CollegeL2
     return
 
-    label b5college:
+    label L2wronganswercollege5:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Milestones{/b}. You may now proceed to Question no. 6."
-        $ score+=0
+        "Your answer is incorrect. The correct answer is {b}C. Conclusion{/b}. You may now proceed to Question no. 6."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question6College
+        jump Question6CollegeL2
     return
 
-    label c5college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Milestones{/b}. You may now proceed to Question no. 6."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question6College
-    return
-
-    label d5college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Milestones{/b}. You may now proceed to Question no. 6."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question6College
-    return
-
-    label question5college_slow:
+    label question5college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}A. Milestones{/b}. You may now proceed to Question no. 6."
-        $ score+=0
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Conclusion{/b}.
+        You may now proceed to Question no. 6."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question6College
+        jump Question6CollegeL2
     return
 
-
-    label Question6College:
+    label Question6CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question6college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question6college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question6College "Which of the following is true about Secondary Data?."
-        jump q6college
+        Question6College "It contains the central argument and can be further broken up into three unique sections."
+        jump q6college2
     return
 
-
-    label q6college:
+    label q6college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. It is the first-hand information obtained from the ground.":
-                jump a6college
-            "B. It is based on subjective data factors such as people's opinions.":
-                jump b6college
-            "C.  It is second-hand information obtained from reading books,
-            watching news, videos, the internet, and other already documented material. ":
-                jump c6college
-            "D. It is based on actual numbers and is, therefore, more objective.":
-                jump d6college
+            "A. Introduction":
+                jump L2correctanswercollege6
+            "B. The body of the paper ":
+                jump L2wronganswercollege6
+            "C. Conclusion":
+                jump L2wronganswercollege6
+            "D. None of the above":
+                jump L2wronganswercollege6
 
     return
 
-    label a6college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. It is second-hand information obtained from reading books,
-        watching news, videos, the internet, and other already documented material.{/b}
-        You may now proceed to Question no. 7."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question7College
-    return
-
-    label b6college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. It is second-hand information obtained from reading books,
-        watching news, videos, the internet, and other already documented material.{/b}
-        You may now proceed to Question no. 7."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question7College
-    return
-
-    label c6college:
+    label L2correctanswercollege6:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 7."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question7College
+        jump Question7CollegeL2
     return
 
-    label d6college:
+    label L2wronganswercollege6:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. It is second-hand information obtained from reading books,
-        watching news, videos, the internet, and other already documented material.{/b}
+        "Your answer is incorrect. The correct answer is {b}B. The body of the paper{/b}.
         You may now proceed to Question no. 7."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question7College
+        jump Question7CollegeL2
     return
 
-    label question6college_slow:
+    label question6college_slow2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}C. It is second-hand information obtained from reading books,
-        watching news, videos, the internet, and other already documented material.{/b}
+        "Unfortunately, you ran out of time. The correct answer is {b}B. The body of the paper{/b}.
         You may now proceed to Question no. 7."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question7College
+        jump Question7CollegeL2
     return
 
-
-    label Question7College:
+    label Question7CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question7college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question7college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question7College "What are the two types of data?"
-        jump q7college
+        Question7College "What is the first step to start writing a position paper?."
+        jump q7college2
     return
 
-
-    label q7college:
+    label q7college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Save Data and Load Data":
-                jump a7college
-            "B. Mobile Data and Computer Data":
-                jump b7college
-            "C. Quantitative Data and Qualitative Data":
-                jump c7college
-            "D. Database and Data Center":
-                jump d7college
+            "A. Introduction":
+                jump L2correctanswercollege7
+            "B. Conclusions  ":
+                jump L2wronganswercollege7
+            "C. Selecting a Topic ":
+                jump L2wronganswercollege7
+            "D. The Body of the paper":
+                jump L2wronganswercollege7
 
     return
 
-    label a7college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Quantitative Data and Qualitative Data{/b}.
-        You may now proceed to Question no. 8."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question8College
-    return
-
-    label b7college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Quantitative Data and Qualitative Data{/b}.
-        You may now proceed to Question no. 8."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question8College
-    return
-
-    label c7college:
+    label L2correctanswercollege7:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 8."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question8College
+        jump Question8CollegeL2
     return
 
-    label d7college:
+    label L2wronganswercollege7:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}C. Quantitative Data and Qualitative Data{/b}.
+        "Your answer is incorrect. The correct answer is {b}C. Selecting a Topic{/b}.
         You may now proceed to Question no. 8."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question8College
+        jump Question8CollegeL2
     return
 
-    label question7college_slow:
+    label question7college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}C. Quantitative Data and Qualitative Data{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Selecting a Topic{/b}.
         You may now proceed to Question no. 8."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question8College
+        jump Question8CollegeL2
     return
 
-
-    label Question8College:
+    label Question8CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question8college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question8college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question8College "It is first-hand information obtained from the ground,
-        for example, by carrying out interviews and site visits. "
-        jump q8college
+        Question8College "Position paper has _________ Main Elements.
+        a proposed study is about, why it is being undertaken, and how it will be carried out."
+        jump q8college2
     return
 
-
-    label q8college:
+    label q8college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Secondary Data":
-                jump a8college
-            "B. Primary Data":
-                jump b8college
-            "C. Save Data":
-                jump c8college
-            "D. Load Data":
-                jump d8college
+            "A. One (1)":
+                jump L2correctanswercollege8
+            "B. Two (2)":
+                jump L2wronganswercollege8
+            "C. Three (3)":
+                jump L2wronganswercollege8
+            "D. Four (4)":
+                jump L2wronganswercollege8
 
     return
 
-    label a8college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Primary Data{/b}.
-        You may now proceed to Question no. 9."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question9College
-    return
-
-    label b8college:
+    label L2correctanswercollege8:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 9."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question9College
+        jump Question9CollegeL2
     return
 
-    label c8college:
+    label L2wronganswercollege8:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Primary Data{/b}.
-        You may now proceed to Question no. 9."
-        $ score+=0
+        "Your answer is incorrect. The correct answer is {b}C. Three (3){/b}. You may now proceed to Question no. 9."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question9College
+        jump Question9CollegeL2
     return
 
-    label d8college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}B. Primary Data{/b}.
-        You may now proceed to Question no. 9."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question9College
-    return
-
-    label question8college_slow:
+    label question8college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}B. Primary Data{/b}.
+        "Unfortunately, you ran out of time. The correct answer is {b}C. Three (3){/b}.
         You may now proceed to Question no. 9."
-        $ score+=0
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question9College
+        jump Question9CollegeL2
     return
 
-
-    label Question9College:
+    label Question9CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question9college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question9college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question9College "To take a side on a subject, what should you establish first?"
-        jump q9college
+        Question9College "Introduction is part of position paper."
+        jump q9college2
     return
 
-
-    label q9college:
+    label q9college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Arguability of a topic that interests you":
-                jump a9college
-            "B. Subject":
-                jump b9college
-            "C. Conclusion":
-                jump c9college
+            "A. True ":
+                jump L2correctanswercollege9
+            "B. False ":
+                jump L2wronganswercollege9
+            "C. Maybe":
+                jump L2wronganswercollege9
             "D. None of the Above":
-                jump d9college
+                jump L2wronganswercollege9
 
     return
 
-    label a9college:
+    label L2correctanswercollege:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
         "Your answer is correct! You may now proceed to Question no. 10."
-        $ score+=1
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump Question10College
+        jump Question10CollegeL2
     return
 
-    label b9college:
+    label L2wronganswercollege:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Arguability of a topic that interests you.{/b}
-        You may now proceed to Question no. 10."
-        $ score+=0
+        "Your answer is incorrect. The correct answer is {b}A. True{/b}. You may now proceed to Question no. 10."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question10College
+        jump Question10CollegeL2
     return
 
-    label c9college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Arguability of a topic that interests you.{/b}
-        You may now proceed to Question no. 10."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question10College
-    return
-
-    label d9college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Arguability of a topic that interests you.{/b}
-        You may now proceed to Question no. 10."
-        $ score+=0
-        stop sound
-        stop music
-        jump Question10College
-    return
-
-    label question9college_slow:
+    label question9college_slowL2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}A. Arguability of a topic that interests you.{/b}
-        You may now proceed to Question no. 10."
-        $ score+=0
+        "Unfortunately, you ran out of time. The correct answer is {b}A. True{/b}. You may now proceed to Question no. 10."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump Question10College
+        jump Question10CollegeL2
     return
 
-
-    label Question10College:
+    label Question10CollegeL2:
         $ time = 10                                     ### set variable time to 3
         $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
-        $ timer_jump = 'question1college_slow'                    ### set where you want to jump once the timer runs out
+        $ timer_jump = 'question10college_slowL2'                    ### set where you want to jump once the timer runs out
 
 
-        Question10College "A good position paper will not only provide ____ but also make proposals for resolutions."
-        jump q10college
+        Question10College "What is the name of Lesson 2?"
+        jump q10college2
     return
 
-
-    label q10college:
+    label q1college2:
 
         show screen countdown                          ### call and start the timer
 
         menu:
 
-            "A. Facts":
-                jump a10college
-            "B. Opinions":
-                jump b10college
-            "C. Subjects":
-                jump c10college
-            "D. Criticisms":
-                jump d10college
+            "A. Reaction Paper ":
+                jump L2wronganswercollege10
+            "B. Review Paper":
+                jump L2wronganswercollege10
+            "C. Note Taking":
+                jump L2wronganswercollege10
+            "D. Position Paper (Part 1).":
+                jump L2correctanswercollege10
 
     return
 
-    label a10college:
+    label L2correctanswercollege10:
         hide screen countdown
         play sound "audio/Correct Answer sfx.mp3"
-        "Your answer is correct! And this is the end of the quiz, let us now see the results."
-        $ score+=1
+        "Your answer is correct! And this is the end of the quiz, let us
+        now see the results."
+        $ scoreL2College +=1
         stop sound
         stop music
-        jump ResultsCollege
+        jump ResultsCollege2
     return
 
-    label b10college:
+    label L2wronganswercollege10:
         hide screen countdown
         play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Facts{/b}. And this is the end of the quiz, let us
-        now see the results."
-        $ score+=0
+        "Your answer is incorrect. The correct answer is {b}D. Position Paper (Part 1){/b}.
+        And this is the end of the quiz, let us now see the results."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump ResultsCollege
+        jump ResultsCollege2
     return
 
-    label c10college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Facts{/b}. And this is the end of the quiz, let us
-        now see the results."
-        $ score+=0
-        stop sound
-        stop music
-        jump ResultsCollege
-    return
-
-    label d10college:
-        hide screen countdown
-        play sound "audio/Wrong Answer sfx.mp3"
-        "Your answer is incorrect. The correct answer is {b}A. Facts{/b}. And this is the end of the quiz, let us
-        now see the results."
-        $ score+=0
-        stop sound
-        stop music
-        jump ResultsCollege
-    return
-
-    label question10college_slow:
+    label question1college_slow2:
         play sound "audio/Time Distortion sfx.mp3"
-        "Unfortunately, you ran out of time. The correct answer is {b}A. Facts{/b}. And this is the end of the quiz, let us
-        now see the results."
-        $ score+=0
+        "Unfortunately, you ran out of time. The correct answer is {b}D. Position Paper (Part 1){/b}.
+        And this is the end of the quiz, let us now see the results."
+        $ scoreL2College +=0
         stop sound
         stop music
-        jump ResultsCollege
+        jump ResultsCollege2
     return
 
-
-    label ResultsCollege:
+    label ResultsCollege2:
         show classroomshs
 
-        "Congratulations, player. Out of {b}10{/b} questions, {b}[playername]{/b} answered {b}[score]{/b} questions. Thanks to you."
+        if scoreL2College == 0:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(0 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L2College
+
+        if scoreL2College == 1:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(10 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L2College
+
+        if scoreL2College == 2:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(20 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L2College
+
+        if scoreL2College == 3:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(30 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L2College
+
+        if scoreL2College == 4:
+            "Out of 10 questions, [playername] have answered {b}[scoreL3SHS]{/b}(40 percent) questions.
+            Unfortunately, you have failed this quiz. Please study the lesson again."
+
+            hide classroomshs
+
+            jump L2College
+
+        if scoreL2College == 5:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (50 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL2College == 6:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (60 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL2College == 7:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (70 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL2College == 8:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (80 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+        if scoreL2College == 9:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (90 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+
+        if scoreL2College == 10:
+            "Out of 10 questions, [playername] answered {b}[scoreL3SHS]{/b} (100 percent)
+            questions. Congratulations, [playername]. You passed in this quiz. Great job!"
+
+            hide classroomshs
+
+            jump EndingCollege
+
+    label L3College:
+        stop music
+
+        $renpy.music.play("audio/DLJ - Deep Sleep ft. TABAL.mp3", loop=True)
+
+        hide Bedroom
+
+        show screen gameUICollege3
+
+        $L3CollegeProgress = 0
+
+        show L3College
+
+        window hide
+
+        pause
+
+        hide L3College
+
+        $L3CollegeProgress += 20
+
+
+        show L3College2
+
+        window hide
+
+        pause
+
+        hide L3College2
+
+        $L3CollegeProgress += 20
+
+
+        show L3College3
+
+        window hide
+
+        pause
+
+        hide L3College3
+
+        $L3CollegeProgress += 60
+
+
+        show L3College4
+
+        window hide
+
+        pause
+
+        hide L3College4
+
+        stop music
+
+        show black
+
+        hide screen gameUICollege3
+
+        "You have finally finished reading the lesson. You will now proceed to the quiz part."
+
+        jump quizdayCollege3
+
+    return
+
+    label quizdayCollege3:
+
+        $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
+
+        show classroomshs
+
+        show TeacherLuna
+
+        teacherluna "Good morning, students. Today is your quiz day. Once I gave the quiz sheets to all of you,
+        you may now start answering the questions provided. Do your best and good luck."
+
+        hide TeacherLuna
+
+        "Teacher Luna gave the quiz sheets to the students."
+
+        "Okay, player. I will present to you the mechanics of this game so please read and follow the
+        mechanics of this game. Thank you."
 
         hide classroomshs
 
-        jump EndingCollege
+        show Mechanics1
+
+        window hide
+
+        pause
+
+        hide Mechanics1
+
+        show Mechanics2
+
+        window hide
+
+        pause
+
+        hide Mechanics2
+
+        show classroomshs
+
+        show TeacherLuna
+
+        teacherluna "Okay, you may now start answering."
+
+        hide TeacherLuna
+
+        "Since you are about to take the quiz, you won't hear any background music until the end of the quiz."
+
+        "That is because usually, when you take your in school, you have to take it quietly."
+
+        stop music
+
+    jump Question1CollegeL3
+
+    label Question1CollegeL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question1college_slowL3'                    ### set where you want to jump once the timer runs out
+
+
+        Question1College "To take a side on a subject, you should first establish the_____ of a topic that interests you."
+        jump q1collegeL3
+    return
+
+    label q1collegeL3:
+
+        show screen countdown                          ### call and start the time
+
+        menu:
+            "A. Arguability":
+                call L3correctanswercollege1
+            "B. Controversy":
+                call L3wronganswercollege1
+            "C. Advocating":
+                call L3wronganswercollege1
+            "D. Distinctive":
+                call L3wronganswercollege1
+    return
+
+    label L3wronganswercollege1:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}A. Arguability{/b}.
+        You may now proceed to Question no. 2."
+        $ scoreL3College +=0
+        stop sound
+        stop music
+        jump Question2CollegeL3
+    return
+
+    label L3correctanswercollege1:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! And this is the end of the quiz, let us
+        now see the results. You may now proceed to Question no. 2."
+        $ scoreL3College +=1
+        stop sound
+        stop music
+        jump Question2CollegeL3
+    return
+
+    label question1college_slowL3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}A. Arguability{/b}.
+        You may now proceed to Question no. 2."
+        $ scoreL3College +=0
+        stop sound
+        stop music
+        jump Question2CollegeL3
+    return
+
+    label Question2CollegeL3:
+        $ time = 10                                     ### set variable time to 3
+        $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+        $ timer_jump = 'question2college_slowL3'                    ### set where you want to jump once the timer runs out
+
+
+        Question2College " It is a real issue, with genuine ____ and uncertainty."
+        jump q2collegeL3
+    return
+
+    label q2collegeL3:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+            "A. Arguability":
+                call L3wronganswercollege2
+            "B. Controversy":
+                call L3correctanswercollege2
+            "C. Advocating":
+                call L3wronganswercollege2
+            "D. Distinctive":
+                call L3wronganswercollege2
+    return
+
+
+    label L3wronganswercollege2:
+        hide screen countdown
+        play sound "audio/Wrong Answer sfx.mp3"
+        "Your answer is incorrect. The correct answer is {b}B. Controversy{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL3College +=0
+        stop sound
+        stop music
+        jump Question3CollegeL3
+    return
+
+    label L3correctanswercollege2:
+        hide screen countdown
+        play sound "audio/Correct Answer sfx.mp3"
+        "Your answer is correct! You may now proceed to Question no. 3."
+        $ scoreL3College +=1
+        stop sound
+        stop music
+        jump Question3CollegeL3
 
     return
+
+    label question2college_slowL3:
+        play sound "audio/Time Distortion sfx.mp3"
+        "Unfortunately, you ran out of time. The correct answer is {b}B. Controversy{/b}.
+        You may now proceed to Question no. 3."
+        $ scoreL3College +=0
+        stop sound
+        stop music
+        jump Question3CollegeL3
+    return
+
+    label Question3CollegeL3:
+            $ time = 10                                     ### set variable time to 3
+            $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+            $ timer_jump = 'question3college_slowL3'                    ### set where you want to jump once the timer runs out
+
+
+            Question3College "Which of the following does not teach you how to write a conclusion
+            for a position paper?"
+            jump q3collegeL3
+    return
+
+    label q3collegeL3:
+
+        show screen countdown                          ### call and start the timer
+
+        menu:
+
+                "A. Restate your topic and why it is important":
+                    call L3wronganswercollege3
+                "B. Restate your thesis/claim":
+                    call L3wronganswercollege3
+                "C. Address opposing viewpoints and explain why readers should align with your
+                position":
+                    call L3wronganswercollege3
+                "D. Create a Reaction Paper on your Position Paper":
+                    call L3correctanswercollege3
+
+        return
+
+    label L3wronganswercollege3:
+            hide screen countdown
+            play sound "audio/Wrong Answer sfx.mp3"
+            "Your answer is incorrect. The correct answer is {b}D. Create a Reaction Paper on your Position Paper{/b}.
+            You may now proceed to Question no. 4."
+            $ scoreL3College +=0
+            stop sound
+            stop music
+            jump Question4CollegeL3
+    return
+
+    label L3correctanswercollege3:
+            hide screen countdown
+            play sound "audio/Correct Answer sfx.mp3"
+            "Your answer is correct! You may now proceed to Question no. 4."
+            $ scoreL3College +=1
+            stop sound
+            stop music
+            jump Question4CollegeL3
+    return
+
+    label question3college_slowL3:
+            play sound "audio/Time Distortion sfx.mp3"
+            "Unfortunately, you ran out of time. The correct answer is {b}D. Create a Reaction Paper on
+            your Position Paper{/b}. You may now proceed to Question no. 4."
+            $ scoreL3College +=0
+            stop sound
+            stop music
+            jump Question4CollegeL3
+    return
+
+###continue
+    label Question4CollegeL3:
+            $ time = 10                                     ### set variable time to 3
+            $ timer_range = 10                              ### set variable timer_range to 3 (this is for purposes of showing a bar)
+            $ timer_jump = 'question4college_slowL3'                    ### set where you want to jump once the timer runs out
+
+
+            Question4College "Which of the following does not teach you how to write a conclusion
+            for a position paper?"
+            jump q4collegeL3
+    return
+
+    label q4collegeL3:
+
+        show screen countdown                          ### call and start the timer
+        menu:
+
+                "A. Restate your topic and why it is important":
+                    call L3wronganswercollege4
+                "B. Restate your thesis/claim":
+                    call L3wronganswercollege4
+                "C. Address opposing viewpoints and explain why readers should align with your
+                position":
+                    call L3wronganswercollege4
+                "D. Create a Reaction Paper on your Position Paper":
+                    call L3correctanswercollege4
+
+        return
+
+    label L3wronganswercollege4:
+            hide screen countdown
+            play sound "audio/Wrong Answer sfx.mp3"
+            "Your answer is incorrect. The correct answer is {b}D. Create a Reaction Paper on your Position Paper{/b}.
+            You may now proceed to Question no. 5."
+            $ scoreL3College +=0
+            stop sound
+            stop music
+            jump Question5CollegeL3
+    return
+
+    label L3correctanswercollege4:
+            hide screen countdown
+            play sound "audio/Correct Answer sfx.mp3"
+            "Your answer is correct! You may now proceed to Question no. 5."
+            $ scoreL3College +=1
+            stop sound
+            stop music
+            jump Question5CollegeL3
+    return
+
+    label question4college_slowL4:
+            play sound "audio/Time Distortion sfx.mp3"
+            "Unfortunately, you ran out of time. The correct answer is {b}D. Create a Reaction Paper on
+            your Position Paper{/b}. You may now proceed to Question no. 5."
+            $ scoreL3College +=0
+            stop sound
+            stop music
+            jump Question5CollegeL3
+    return
+
+
+
+
+
+
+
 
     label EndingCollege:
         $renpy.music.play("audio/The 126ers - End Of Summer Instrumental Extended.mp3", loop=True)
